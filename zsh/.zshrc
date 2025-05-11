@@ -48,6 +48,7 @@ alias pgg='curl https://api.ipify.org'
 # -------------------------------------------
 # | LOAD PLUGINS                            |
 # -------------------------------------------
+[[ -f ~/.local/bin/mise ]] && eval "$(~/.local/bin/mise activate zsh --shims)"
 for plugin in $(find ~/zsh-custom); do
     [[ "${plugin##*.}" == "zsh" ]] && source $plugin
 done

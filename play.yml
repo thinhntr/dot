@@ -16,6 +16,10 @@
     - name: mise - stow symlinks
       command: stow -R mise -t $HOME
 
+    - name: after mise - stow symlinks
+      shell: |
+        stow -R fzf -t $HOME
+
     - name: utils dir - create
       command: mkdir -p $HOME/utils
 
