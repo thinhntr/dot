@@ -35,6 +35,7 @@
         stow -R starship -t $HOME
         stow -R tmux -t $HOME
         stow -R nvim -t $HOME
+        stow -R wezterm -t $HOME
 
     - name: utils dir
       file:
