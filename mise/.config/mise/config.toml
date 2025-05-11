@@ -2,4 +2,5 @@
 fzf = "latest"
 neovim = "latest"
 starship = "latest"
+stylua = "latest"
 tmux = "latest"
