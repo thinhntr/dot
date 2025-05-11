@@ -16,9 +16,14 @@
     - name: mise - stow symlinks
       command: stow -R mise -t $HOME
 
-    - name: after mise - stow symlinks
+    - name: mise install packages
+      command: mise i
+
+    - name: stow symlinks
       shell: |
         stow -R fzf -t $HOME
+        stow -R starship -t $HOME
+        stow -R tmux -t $HOME
 
     - name: utils dir - create
       command: mkdir -p $HOME/utils
