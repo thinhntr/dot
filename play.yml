@@ -2,6 +2,16 @@
 - name: set up
   hosts: localhost
   tasks:
+    - name: bin dir
+      file:
+        path: $HOME/bin
+        state: directory
+
+    - name: zsh-custom dir
+      file:
+        path: $HOME/zsh-custom
+        state: directory
+
     - name: general - stow symlinks
       shell: |
         stow -R zsh -t $HOME
@@ -25,8 +35,10 @@
         stow -R starship -t $HOME
         stow -R tmux -t $HOME
 
-    - name: utils dir - create
-      command: mkdir -p $HOME/utils
+    - name: utils dir
+      file:
+        path: $HOME/utils
+        state: directory
 
     - name: utils dir - stow symlink
       command: stow -R utils -t $HOME/utils
