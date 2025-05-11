@@ -1,4 +1,6 @@
 return {
+  { "Bekaboo/dropbar.nvim", event = "VeryLazy" },
+
   {
     "tpope/vim-sleuth",
     event = { "BufReadPost", "BufWritePost", "BufNewFile" },
@@ -54,7 +56,7 @@ return {
     "kevinhwang91/nvim-ufo",
     event = "VeryLazy",
     dependencies = "kevinhwang91/promise-async",
-    config = function(opts)
+    config = function()
       local ufo = require("ufo")
       ufo.setup({
         provider_selector = function()

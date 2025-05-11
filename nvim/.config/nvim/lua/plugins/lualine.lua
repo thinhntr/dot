@@ -16,7 +16,6 @@ return { -- "nvim-lualine/lualine.nvim",
         lualine_c = { "%{ expand('%:~:.:h') }", "%=" },
         lualine_x = { "diagnostics", "diff", "branch", "filetype" },
       },
-      winbar = { lualine_x = {} },
     }
 
     local harpoon = require("harpoon")
@@ -41,7 +40,7 @@ return { -- "nvim-lualine/lualine.nvim",
       table.insert(harpoon_component.active_indicators, "[" .. i .. "]")
     end
 
-    table.insert(opts.winbar.lualine_x, harpoon_component)
+    table.insert(opts.sections.lualine_c, harpoon_component)
 
     return opts
   end,
