@@ -3,6 +3,20 @@ return { -- "nvim-telescope/telescope.nvim"
   -- branch = "0.1.x",
   -- event = "VeryLazy",
   lazy = true,
+  keys = {
+    "<leader>fn",
+    "<leader>f/",
+    "<leader>fb",
+    "<leader>fr",
+    "<leader>fd",
+    "<leader>ff",
+    "<leader>fw",
+    "<leader>fs",
+    "<leader>fg",
+    "<leader><leader>",
+    "<leader>fk",
+    "<leader>fh",
+  },
   dependencies = {
     "nvim-lua/plenary.nvim",
     { -- "nvim-telescope/telescope-fzf-native.nvim",
@@ -61,7 +75,7 @@ return { -- "nvim-telescope/telescope.nvim"
     )
     vim.keymap.set(
       "n",
-      "<leader>fg",
+      "<leader>ff",
       builtin.git_files,
       { desc = "Fuzzy search through the output of git ls-files" }
     )
@@ -79,7 +93,7 @@ return { -- "nvim-telescope/telescope.nvim"
     )
     vim.keymap.set(
       "n",
-      "<leader>ff",
+      "<leader>fg",
       builtin.live_grep,
       { desc = "[F]ind by Grep" }
     )
