@@ -1,0 +1,23 @@
+---
+- name: set up
+  hosts: localhost
+  tasks:
+    - name: general - stow symlinks
+      shell: |
+        stow -R zsh -t $HOME
+        stow -R brew -t $HOME
+
+    - name: mise - install
+      shell: |
+        if [[ ! -f ~/.local/bin/mise ]] ; then
+            curl https://mise.run | sh
+        fi
+
+    - name: mise - stow symlinks
+      command: stow -R mise -t $HOME
+
+    - name: utils dir - create
+      command: mkdir -p $HOME/utils
+
+    - name: utils dir - stow symlink
+      command: stow -R utils -t $HOME/utils
