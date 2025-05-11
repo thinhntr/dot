@@ -49,6 +49,29 @@ return {
     keys = { { "<leader>e", "<CMD>Oil<CR>" } },
     dependencies = { "nvim-tree/nvim-web-devicons" },
   },
+
+  { -- "kevinhwang91/nvim-ufo"
+    "kevinhwang91/nvim-ufo",
+    event = "VeryLazy",
+    dependencies = "kevinhwang91/promise-async",
+    config = function(opts)
+      local ufo = require("ufo")
+      ufo.setup({
+        provider_selector = function()
+          return { "treesitter", "indent" }
+        end,
+      })
+
+      vim.keymap.set("n", "zR", ufo.openAllFolds, { desc = "ufo openAllFolds" })
+      vim.keymap.set(
+        "n",
+        "zM",
+        ufo.closeAllFolds,
+        { desc = "ufo closeAllFolds" }
+      )
+    end,
+  },
+
   { -- "folke/snacks.nvim"
     "folke/snacks.nvim",
     -- priority = 1000,
