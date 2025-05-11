@@ -12,9 +12,12 @@ return { -- "nvim-lualine/lualine.nvim",
         component_separators = "",
       },
       sections = {
-        lualine_b = { "filename" },
-        lualine_c = { "%{ expand('%:~:.:h') }", "%=" },
-        lualine_x = { "diagnostics", "diff", "branch", "filetype" },
+        lualine_b = { "%{ expand('%:~:.:h') }" },
+        lualine_c = { "filename", "%=" },
+        lualine_x = { "diagnostics", "lsp_status", "diff", "branch" },
+        lualine_y = { "filetype" },
+        -- lualine_z = { { "progress", separator = "" }, "location" },
+        lualine_z = { { "progress", separator = "▕" }, "location" },
       },
     }
 

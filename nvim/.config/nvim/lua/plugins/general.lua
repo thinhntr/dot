@@ -1,5 +1,13 @@
 return {
-  { "Bekaboo/dropbar.nvim", event = "VeryLazy" },
+  {
+    "Bekaboo/dropbar.nvim",
+    event = "VeryLazy",
+    opts = {
+      sources = {
+        path = { max_depth = 4 },
+      },
+    },
+  },
 
   {
     "tpope/vim-sleuth",
