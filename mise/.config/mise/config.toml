@@ -1,6 +1,9 @@
 [tools]
 fzf = "latest"
+go = "latest"
 neovim = "latest"
 starship = "latest"
 stylua = "latest"
 tmux = "latest"
+node = "latest"
+ripgrep = "latest"
