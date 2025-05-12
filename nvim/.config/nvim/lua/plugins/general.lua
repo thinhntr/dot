@@ -51,7 +51,7 @@ return {
 
   { -- "stevearc/oil.nvim",
     "stevearc/oil.nvim",
-    lazy = true,
+    lazy = vim.fn.argc(-1) == 0,
     opts = {
       default_file_explorer = true,
       view_options = { show_hidden = true },
