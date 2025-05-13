@@ -10,8 +10,8 @@ return {
   },
 
   {
-    "tpope/vim-sleuth",
-    event = { "BufReadPost", "BufWritePost", "BufNewFile" },
+    "NMAC427/guess-indent.nvim",
+    opts = {},
   },
 
   {
@@ -20,8 +20,11 @@ return {
     dependencies = "tpope/vim-repeat",
   },
 
+  { "lewis6991/gitsigns.nvim", event = "InsertEnter" },
+
   { -- "tpope/vim-fugitive",
     "tpope/vim-fugitive",
+    dependencies = "lewis6991/gitsigns.nvim",
     keys = { { "<leader>gg", vim.cmd.Git, desc = "vim-fugitive" } },
   },
 
