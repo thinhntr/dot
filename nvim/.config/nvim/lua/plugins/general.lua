@@ -65,7 +65,7 @@ return {
 
   { -- "kevinhwang91/nvim-ufo"
     "kevinhwang91/nvim-ufo",
-    event = "VeryLazy",
+    event = "CursorMoved",
     dependencies = "kevinhwang91/promise-async",
     config = function()
       local ufo = require("ufo")
@@ -87,8 +87,8 @@ return {
 
   { -- "folke/snacks.nvim"
     "folke/snacks.nvim",
-    -- priority = 1000,
-    event = { "BufReadPost", "BufWritePost", "BufNewFile" },
+    priority = 1000,
+    lazy = false,
     opts = {
       indent = {
         enabled = true,
