@@ -32,33 +32,33 @@ return {
           map("gra", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
           map(
             "grr",
-            require("telescope.builtin").lsp_references,
+            require("snacks").picker.lsp_references,
             "[G]oto [R]eferences"
           )
           map(
             "gri",
-            require("telescope.builtin").lsp_implementations,
+            require("snacks").picker.lsp_implementations,
             "[G]oto [I]mplementation"
           )
           map(
             "grd",
-            require("telescope.builtin").lsp_definitions,
+            require("snacks").picker.lsp_definitions,
             "[G]oto [D]efinition"
           )
           map("grD", vim.lsp.buf.declaration, "[G]oto [D]efinition")
           map(
             "gO",
-            require("telescope.builtin").lsp_document_symbols,
+            require("snacks").picker.lsp_symbols,
             "Open Document Symbols"
           )
           map(
             "gW",
-            require("telescope.builtin").lsp_dynamic_workspace_symbols,
+            require("snacks").picker.lsp_workspace_symbols,
             "Open Workspace Symbols"
           )
           map(
             "grt",
-            require("telescope.builtin").lsp_type_definitions,
+            require("snacks").picker.lsp_type_definitions,
             "[G]oto [T]ype Definition"
           )
 
@@ -155,6 +155,7 @@ return {
       library = {
         -- Load luvit types when the `vim.uv` word is found
         { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+        { path = "snacks.nvim", words = { "Snacks" } },
       },
     },
   },
