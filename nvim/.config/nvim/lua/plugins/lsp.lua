@@ -5,8 +5,8 @@ return {
     dependencies = {
       -- Automatically install LSPs and related tools to stdpath for Neovim
       -- NOTE: Must be loaded before dependants
-      { "mason-org/mason.nvim", config = {} },
-      "mason-org/mason-lspconfig.nvim",
+      { "mason-org/mason.nvim", opts = {}, version = "^1.0.0" },
+      { "mason-org/mason-lspconfig.nvim", version = "^1.0.0" },
       "WhoIsSethDaniel/mason-tool-installer.nvim",
 
       "saghen/blink.cmp",
@@ -118,8 +118,6 @@ return {
           },
         },
       }
-
-      require("mason").setup()
 
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
