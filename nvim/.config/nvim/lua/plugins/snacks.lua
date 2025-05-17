@@ -3,10 +3,19 @@ return { -- "folke/snacks.nvim"
   priority = 1000,
   lazy = false,
   opts = {
-    picker = {},
+    picker = {
+      layout = { preset = "default", preview = false },
+      formatters = {
+        file = { truncate = 120 },
+      },
+    },
     indent = {
       enabled = true,
       animate = { enabled = false },
+      char = "🭰",
+      scope = {
+        char = "🭰",
+      },
     },
   },
   keys = {
@@ -87,6 +96,13 @@ return { -- "folke/snacks.nvim"
         Snacks.picker.files({ cwd = vim.fn.stdpath("config") })
       end,
       desc = "find neovim config files",
+    },
+    {
+      "<leader>fp",
+      function()
+        Snacks.picker()
+      end,
+      desc = "snacks picker",
     },
   },
 }
