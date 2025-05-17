@@ -2,22 +2,30 @@ return { -- "nvim-lualine/lualine.nvim",
   "nvim-lualine/lualine.nvim",
   event = "VeryLazy",
   opts = function()
-    -- local lualine_require = require("lualine_require")
-    -- lualine_require.require = require
-
     local opts = {
       options = {
         icons_enabled = false,
-        section_separators = "",
-        component_separators = "",
+        component_separators = "|",
+        section_separators = { left = "", right = "" },
       },
       sections = {
-        lualine_b = { "%-0.40{ expand('%:~:.:h') }" },
-        lualine_c = { "filename", "%=" },
-        lualine_x = { "diagnostics", "lsp_status", "diff", "branch" },
-        lualine_y = { "filetype" },
-        -- lualine_z = { { "progress", separator = "" }, "location" },
-        lualine_z = { { "progress", separator = "▕" }, "location" },
+        lualine_a = { { "mode", separator = { left = "" } } },
+        lualine_b = { "%-00.38{ expand('%:~:.') }" },
+        lualine_c = { { "%=", separator = {} } },
+        lualine_x = {
+          { "diagnostics", separator = {} },
+          { "lsp_status", separator = {} },
+          { "diff", separator = {} },
+          { "branch", separator = {} },
+        },
+        lualine_y = { "filetype", "progress" },
+        lualine_z = {
+          {
+            "location",
+            separator = { right = "" },
+            padding = { left = 0, right = 0 },
+          },
+        },
       },
     }
 
