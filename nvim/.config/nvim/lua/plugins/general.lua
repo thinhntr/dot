@@ -20,7 +20,7 @@ return {
     dependencies = "tpope/vim-repeat",
   },
 
-  { "lewis6991/gitsigns.nvim", event = "InsertEnter" },
+  { "lewis6991/gitsigns.nvim", event = "VeryLazy" },
 
   { -- "tpope/vim-fugitive",
     "tpope/vim-fugitive",

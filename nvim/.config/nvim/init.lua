@@ -48,6 +48,9 @@ vim.keymap.set("n", "Q", "<Nop>", { silent = true })
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 vim.keymap.set("i", "<C-c>", "<Esc>")
 
+vim.keymap.set("n", "<C-j>", "<cmd>cnext<cr>zz", { desc = "quickfix cnext" })
+vim.keymap.set("n", "<C-k>", "<cmd>cprev<cr>zz", { desc = "quickfix cprev" })
+
 -- window nav shortcuts
 vim.keymap.set("n", "<C-h>", "<C-w><C-w>", { desc = "Cycle through windows" })
 vim.keymap.set("n", "<C-q>", "<C-w><C-q>", { desc = "Close window" })
