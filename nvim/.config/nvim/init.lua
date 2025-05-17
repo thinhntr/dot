@@ -73,8 +73,14 @@ vim.keymap.set(
   { desc = "chmod +x current file" }
 )
 vim.keymap.set(
-  "v",
+  "n",
   "<leader>xx",
+  "<cmd>! %:p<cr>",
+  { desc = "execute current file" }
+)
+vim.keymap.set(
+  "v",
+  "<leader>xh",
   "y:let @9=substitute(@0, '\\\\*\\n', ' ', 'g')<CR>:!<C-r>9",
   { desc = "execute highlighted text" }
 )
