@@ -25,6 +25,7 @@ return {
   { -- "tpope/vim-fugitive",
     "tpope/vim-fugitive",
     dependencies = "lewis6991/gitsigns.nvim",
+    cmd = "Git",
     keys = { { "<leader>gg", vim.cmd.Git, desc = "vim-fugitive" } },
   },
 
