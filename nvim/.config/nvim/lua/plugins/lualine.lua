@@ -9,21 +9,38 @@ return { -- "nvim-lualine/lualine.nvim",
         section_separators = { left = "", right = "" },
       },
       sections = {
-        lualine_a = { { "mode", separator = { left = "" } } },
-        lualine_b = { "%-00.38{ expand('%:~:.') }" },
-        lualine_c = { { "%=", separator = {} } },
+        lualine_a = {
+          {
+            "mode",
+            fmt = function(s)
+              return s:sub(1, 3)
+            end,
+            separator = { left = "" },
+          },
+        },
+        lualine_b = {
+          {
+            "branch",
+            fmt = function(s)
+              return "%-00.20{ '" .. s .. "' }"
+            end,
+          },
+        },
+        lualine_c = {
+          { "%-00.38{ expand('%:~:.') }", separator = {} },
+          { "%=", separator = {} },
+        },
         lualine_x = {
           { "diagnostics", separator = {} },
           { "lsp_status", separator = {} },
           { "diff", separator = {} },
-          { "branch", separator = {} },
         },
         lualine_y = { "filetype", "progress" },
         lualine_z = {
           {
             "location",
             separator = { right = "" },
-            padding = { left = 0, right = 0 },
+            padding = { left = 1, right = 0 },
           },
         },
       },

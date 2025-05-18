@@ -4,7 +4,7 @@ return {
     event = "VeryLazy",
     opts = {
       sources = {
-        path = { max_depth = 4 },
+        path = { max_depth = 0 },
       },
     },
   },
