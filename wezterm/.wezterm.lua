@@ -3,6 +3,13 @@ local config = wezterm.config_builder()
 
 config.color_scheme = "Catppuccin Macchiato (Gogh)"
 
+local catppuccin_moon = wezterm.color.get_builtin_schemes()["Catppuccin Macchiato (Gogh)"]
+catppuccin_moon.background = wezterm.color.get_builtin_schemes()["Rosé Pine Moon (Gogh)"].background
+config["color_schemes"] = {
+	catppuccin_moon = catppuccin_moon,
+}
+config.color_scheme = "catppuccin_moon"
+
 config.font_size = 17
 config.line_height = 1.1
 

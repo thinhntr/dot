@@ -42,6 +42,12 @@ return {
         flavour = "macchiato",
         no_italic = true,
         no_bold = true,
+        color_overrides = {
+          macchiato = {
+            base = "#232136",
+            mantle = "#232136",
+          },
+        },
         integrations = {
           snacks = {
             enabled = true,
