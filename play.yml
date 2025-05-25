@@ -36,6 +36,7 @@
         stow -R tmux -t $HOME
         stow -R nvim -t $HOME
         stow -R wezterm -t $HOME
+        stow -R bat -t $HOME
 
     - name: utils dir
       file:
