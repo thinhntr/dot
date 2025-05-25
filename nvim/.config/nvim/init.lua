@@ -66,7 +66,7 @@ vim.keymap.set("x", "<", "<gv", { desc = "shift left nonstop" })
 vim.keymap.set(
   "n",
   "<leader>xc",
-  "<CMD>w<CR><CMD>!chmod +x %:p<CR>",
+  "<CMD>!chmod +x %:p<CR>",
   { desc = "chmod +x current file" }
 )
 vim.keymap.set(
@@ -101,6 +101,48 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   ),
   callback = function()
     vim.hl.on_yank()
+  end,
+})
+
+vim.api.nvim_create_autocmd("BufWritePost", {
+  pattern = { "*.foo" },
+  group = vim.api.nvim_create_augroup("FooTmux", { clear = true }),
+  callback = function()
+    local count = vim.fn.system("tmux list-panes | wc -l")
+    if tonumber(count) < 2 then
+      vim.fn.system("tmux splitw -h")
+    end
+    local cmd = "tmux send-keys -t :.2 '" .. vim.fn.expand("%:p") .. "' Enter"
+    vim.fn.system(cmd)
+  end,
+})
+
+vim.api.nvim_create_autocmd("BufWritePost", {
+  desc = "Create BarBuf",
+  group = vim.api.nvim_create_augroup("BarBufGroup", { clear = true }),
+  pattern = { "*.bar" },
+  callback = function()
+    local barBufnr = vim.fn.bufnr("BarBuf")
+
+    if barBufnr == -1 then
+      barBufnr = vim.api.nvim_create_buf(false, true)
+      vim.api.nvim_buf_set_name(barBufnr, "BarBuf")
+    end
+
+    if not _G.BarWin or not vim.api.nvim_win_is_valid(_G.BarWin) then
+      local curWin = vim.api.nvim_get_current_win()
+      vim.cmd.vsplit()
+      _G.BarWin = vim.api.nvim_get_current_win()
+      vim.api.nvim_win_set_buf(_G.BarWin, barBufnr)
+      vim.api.nvim_set_current_win(curWin)
+    end
+
+    vim.fn.jobstart({ "zsh", vim.fn.expand("%:p") }, {
+      stdout_buffered = true,
+      on_stdout = function(_, data)
+        vim.api.nvim_buf_set_lines(barBufnr, -1, -1, false, data)
+      end,
+    })
   end,
 })
 
@@ -151,6 +193,15 @@ vim.keymap.set("n", "<leader>qv", function()
     vim.notify("diagnostic virtual lines enabled")
   end
 end, { desc = "Toggle virtual lines" })
+
+--[[
+===================
+| DEBUG           |
+===================
+--]]
+function P(t)
+  vim.print(vim.inspect(t))
+end
 
 --[[
 ===================
