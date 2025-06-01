@@ -26,13 +26,14 @@ vim.o.listchars = "tab:» ,trail:·,nbsp:␣"
 vim.o.laststatus = 3 -- all windows use the same status line
 vim.o.showmode = false -- don't show the mode, it's in the status line
 
-vim.o.scrolloff = 5
+vim.o.scrolloff = 6
 vim.o.fixeol = false
 vim.o.guicursor = ""
 vim.o.signcolumn = "auto"
 vim.o.colorcolumn = "80"
 vim.o.cursorline = true
 vim.o.wrap = false
+vim.o.winborder = 'rounded'
 vim.o.confirm = true -- confirm on save
 vim.o.timeoutlen = 500 -- decrease mapped sequence wait time
 vim.o.splitright = true
