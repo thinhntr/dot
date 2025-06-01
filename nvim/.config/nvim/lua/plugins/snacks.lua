@@ -12,10 +12,6 @@ return { -- "folke/snacks.nvim"
     indent = {
       enabled = true,
       animate = { enabled = false },
-      char = "🭰",
-      scope = {
-        char = "🭰",
-      },
     },
   },
   keys = {
