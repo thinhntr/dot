@@ -27,7 +27,7 @@ return { -- "nvim-lualine/lualine.nvim",
           },
         },
         lualine_c = {
-          { "%-00.38{ expand('%:~:.') }", separator = {} },
+          { "%-00.38{ expand('%:~:.') } %m", separator = {} },
           { "%=", separator = {} },
         },
         lualine_x = {
