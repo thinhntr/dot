@@ -10,8 +10,8 @@ config["color_schemes"] = {
 }
 config.color_scheme = "catppuccin_moon"
 
-config.font_size = 17
-config.line_height = 1.1
+config.font = wezterm.font("JetBrainsMonoNL Nerd Font Mono")
+config.font_size = 16
 
 config.window_decorations = "INTEGRATED_BUTTONS|RESIZE"
 

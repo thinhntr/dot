@@ -33,7 +33,7 @@ vim.o.signcolumn = "auto"
 vim.o.colorcolumn = "80"
 vim.o.cursorline = true
 vim.o.wrap = false
-vim.o.winborder = 'rounded'
+vim.o.winborder = "single"
 vim.o.confirm = true -- confirm on save
 vim.o.timeoutlen = 500 -- decrease mapped sequence wait time
 vim.o.splitright = true
@@ -184,8 +184,15 @@ vim.diagnostic.config({
 vim.keymap.set(
   "n",
   "<leader>qq",
-  vim.diagnostic.setloclist,
+  vim.diagnostic.setqflist,
   { desc = "Open diagnostic [Q]uickfix list" }
+)
+
+vim.keymap.set(
+  "n",
+  "<leader>ql",
+  vim.diagnostic.setloclist,
+  { desc = "Open buffer diagnostic [L]ocation list" }
 )
 
 vim.keymap.set("n", "<leader>qv", function()

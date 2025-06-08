@@ -20,15 +20,6 @@ return {
     dependencies = "tpope/vim-repeat",
   },
 
-  { "lewis6991/gitsigns.nvim", event = "VeryLazy" },
-
-  { -- "tpope/vim-fugitive",
-    "tpope/vim-fugitive",
-    dependencies = "lewis6991/gitsigns.nvim",
-    cmd = "Git",
-    keys = { { "<leader>gg", vim.cmd.Git, desc = "vim-fugitive" } },
-  },
-
   { "norcalli/nvim-terminal.lua", opts = {}, ft = "terminal" },
 
   { -- "catppuccin/nvim",
@@ -45,10 +36,10 @@ return {
         color_overrides = {
           macchiato = {
             base = "#232136",
-            mantle = "#232136",
           },
         },
         integrations = {
+          ufo = false,
           snacks = {
             enabled = true,
             indent_scope_color = "lavender",

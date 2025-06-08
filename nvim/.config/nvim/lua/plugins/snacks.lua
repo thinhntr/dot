@@ -13,6 +13,11 @@ return { -- "folke/snacks.nvim"
       enabled = true,
       animate = { enabled = false },
     },
+    scope = {},
+    statuscolumn = {
+      left = { "sign" },
+      right = { "fold", "git" },
+    },
   },
   keys = {
     {
