@@ -32,9 +32,10 @@ return {
   dependencies = { -- "nvim-treesitter/nvim-treesitter-context",
     "nvim-treesitter/nvim-treesitter-context",
     opts = {
-      trim_scope = "inner",
+      trim_scope = "outer",
       mode = "topline",
-      max_lines = 4,
+      max_lines = 6,
+      min_window_height = 20,
     },
   },
 }
