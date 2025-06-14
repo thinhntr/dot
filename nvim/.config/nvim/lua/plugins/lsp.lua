@@ -80,7 +80,11 @@ return {
       })
 
       require("mason-lspconfig").setup({
-        automatic_enable = true,
+        automatic_enable = {
+          exclude = {
+            "ruff",
+          },
+        },
         ensure_installed = {},
         automatic_installation = false,
       })
