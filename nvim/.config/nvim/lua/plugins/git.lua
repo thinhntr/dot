@@ -10,19 +10,18 @@ return {
       { "[h", "<cmd>Gitsigns prev_hunk<cr>" },
       { "]h", "<cmd>Gitsigns next_hunk<cr>" },
       { "<leader>gh", "<cmd>Gitsigns setqflist<cr>" },
-      {
-        "<leader>gs",
-        function()
-          require("gitsigns").setqflist("all")
-        end,
-      },
+      { "<leader>g-", ":Gitsigns stage_hunk<cr>", mode = { "n", "v" } },
+      { "<leader>gr", ":Gitsigns reset_hunk<cr>", mode = { "n", "v" } },
     },
   },
 
   { -- "tpope/vim-fugitive",
     "tpope/vim-fugitive",
     dependencies = "lewis6991/gitsigns.nvim",
-    cmd = "Git",
-    keys = { { "<leader>gg", vim.cmd.Git, desc = "vim-fugitive" } },
+    cmd = { "Git", "G" },
+    keys = {
+      { "<leader>gg", "<cmd>Git<cr>" },
+      { "<leader>gs", "<cmd>Git difftool --name-status<cr>" },
+    },
   },
 }
