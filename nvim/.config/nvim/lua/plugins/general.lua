@@ -58,7 +58,11 @@ return {
       view_options = { show_hidden = true },
     },
     keys = { { "<leader>e", "<CMD>Oil<CR>" } },
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    dependencies = {
+      "echasnovski/mini.icons",
+      version = false,
+      opts = {},
+    },
   },
 
   { -- "kevinhwang91/nvim-ufo"

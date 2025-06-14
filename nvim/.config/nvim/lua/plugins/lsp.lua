@@ -102,7 +102,10 @@ return {
 
   { -- "saghen/blink.cmp",
     "saghen/blink.cmp",
-    dependencies = { "L3MON4D3/LuaSnip" },
+    dependencies = {
+      "L3MON4D3/LuaSnip",
+      "echasnovski/mini.icons",
+    },
     version = "1.*",
     opts = {
       signature = { enabled = true },
@@ -115,6 +118,24 @@ return {
         },
       },
       snippets = { preset = "luasnip" },
+      completion = {
+        menu = {
+          draw = {
+            columns = {
+              { "kind_icon", gap = 1 },
+              { "label", "label_description", gap = 1 },
+              { "kind" },
+            },
+            components = {
+              kind_icon = {
+                text = function(ctx)
+                  return require("mini.icons").get("lsp", ctx.kind)
+                end,
+              },
+            },
+          },
+        },
+      },
     },
   },
 
