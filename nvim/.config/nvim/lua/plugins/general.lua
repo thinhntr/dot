@@ -36,6 +36,7 @@ return {
         color_overrides = {
           macchiato = {
             base = "#232136",
+            mantle = "#232136",
           },
         },
         integrations = {
