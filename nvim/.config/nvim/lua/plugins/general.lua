@@ -1,6 +1,4 @@
 return {
-  { "echasnovski/mini.ai", version = false, opts = {} },
-
   { "NMAC427/guess-indent.nvim", opts = {} },
 
   { "norcalli/nvim-terminal.lua", opts = {}, ft = "terminal" },

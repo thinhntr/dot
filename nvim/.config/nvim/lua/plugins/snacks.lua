@@ -3,6 +3,9 @@ return { -- "folke/snacks.nvim"
   priority = 1000,
   lazy = false,
   opts = {
+    notifier = {
+      timeout = 5000,
+    },
     picker = {
       layout = { preset = "default", preview = false },
       formatters = {
