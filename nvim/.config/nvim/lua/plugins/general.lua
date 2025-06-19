@@ -14,11 +14,21 @@ return {
   {
     "Bekaboo/dropbar.nvim",
     event = "VeryLazy",
-    opts = {
-      sources = {
-        path = { max_depth = 0 },
-      },
-    },
+    opts = function()
+      local sources = require("dropbar.configs").opts.sources
+      local ts_valid_types = vim.tbl_filter(function(value)
+        return value ~= "pair"
+      end, sources.treesitter.valid_types)
+
+      return {
+        sources = {
+          path = { max_depth = 0 },
+          treesitter = {
+            valid_types = ts_valid_types,
+          },
+        },
+      }
+    end,
   },
 
   { -- "catppuccin/nvim",
