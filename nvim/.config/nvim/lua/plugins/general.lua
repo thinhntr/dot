@@ -1,4 +1,6 @@
 return {
+  { "echasnovski/mini.ai", version = false, opts = {} },
+
   {
     "Bekaboo/dropbar.nvim",
     event = "VeryLazy",
