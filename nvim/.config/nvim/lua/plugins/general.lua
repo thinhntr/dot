@@ -1,6 +1,16 @@
 return {
   { "echasnovski/mini.ai", version = false, opts = {} },
 
+  { "NMAC427/guess-indent.nvim", opts = {} },
+
+  { "norcalli/nvim-terminal.lua", opts = {}, ft = "terminal" },
+
+  {
+    "tpope/vim-surround",
+    keys = { "ys", "ds", "cs" },
+    dependencies = "tpope/vim-repeat",
+  },
+
   {
     "Bekaboo/dropbar.nvim",
     event = "VeryLazy",
@@ -10,19 +20,6 @@ return {
       },
     },
   },
-
-  {
-    "NMAC427/guess-indent.nvim",
-    opts = {},
-  },
-
-  {
-    "tpope/vim-surround",
-    keys = { "ys", "ds", "cs" },
-    dependencies = "tpope/vim-repeat",
-  },
-
-  { "norcalli/nvim-terminal.lua", opts = {}, ft = "terminal" },
 
   { -- "catppuccin/nvim",
     "catppuccin/nvim",
