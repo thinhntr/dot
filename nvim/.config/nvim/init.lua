@@ -33,6 +33,7 @@ vim.o.signcolumn = "auto"
 vim.o.colorcolumn = "80"
 vim.o.cursorline = true
 vim.o.wrap = false
+vim.o.breakindent = true
 vim.o.winborder = "single"
 vim.o.confirm = true -- confirm on save
 vim.o.timeoutlen = 500 -- decrease mapped sequence wait time
