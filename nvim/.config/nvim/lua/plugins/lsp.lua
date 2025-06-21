@@ -52,7 +52,6 @@ end
 return {
   { -- "neovim/nvim-lspconfig", Main LSP Configuration
     "mason-org/mason-lspconfig.nvim",
-    event = { "BufReadPost", "BufWritePost", "BufNewFile" },
     dependencies = {
       { "mason-org/mason.nvim", opts = {} },
       "WhoIsSethDaniel/mason-tool-installer.nvim",

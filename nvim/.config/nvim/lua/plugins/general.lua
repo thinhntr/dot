@@ -79,11 +79,7 @@ return {
     dependencies = "kevinhwang91/promise-async",
     config = function()
       local ufo = require("ufo")
-      ufo.setup({
-        provider_selector = function()
-          return { "treesitter", "indent" }
-        end,
-      })
+      ufo.setup({})
 
       vim.keymap.set("n", "zR", ufo.openAllFolds, { desc = "ufo openAllFolds" })
       vim.keymap.set(

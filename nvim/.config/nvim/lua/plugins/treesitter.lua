@@ -7,7 +7,10 @@ local ts_ensure_installed = {
   "javascript",
   "json",
   "lua",
+  "markdown",
+  "markdown_inline",
   "python",
+  "regex",
   "typescript",
   "vimdoc",
   "yaml",
@@ -18,8 +21,7 @@ return {
   version = false,
   build = ":TSUpdate",
   cmd = { "TSInstall", "TSUpdate", "TSUpdateSync" },
-  event = { "BufReadPost", "BufWritePost", "BufNewFile", "VeryLazy" },
-  lazy = vim.fn.argc(-1) == 0,
+  lazy = false,
   init = function(plugin)
     require("lazy.core.loader").add_to_rtp(plugin)
     require("nvim-treesitter.query_predicates")

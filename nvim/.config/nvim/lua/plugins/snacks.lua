@@ -4,10 +4,11 @@ return { -- "folke/snacks.nvim"
   lazy = false,
   opts = {
     notifier = {
-      timeout = 5000,
+      timeout = 10000,
     },
     picker = {
       layout = { preset = "default", preview = false },
+      matcher = { frecency = true },
       formatters = {
         file = { truncate = 120 },
       },
