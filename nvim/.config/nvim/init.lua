@@ -110,15 +110,27 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 })
 
 vim.api.nvim_create_autocmd("BufWritePost", {
-  pattern = { "*.foo" },
+  pattern = { "*.foo", "*.py" },
   group = vim.api.nvim_create_augroup("FooTmux", { clear = true }),
   callback = function()
     local count = vim.fn.system("tmux list-panes | wc -l")
     if tonumber(count) < 2 then
       vim.fn.system("tmux splitw -h")
     end
-    local cmd = "tmux send-keys -t :.2 '" .. vim.fn.expand("%:p") .. "' Enter"
-    vim.fn.system(cmd)
+    -- local cmd = vim.fn.expand("%:p")
+
+    vim.system({ "tmux", "send-keys", "-t", ":.2", "C-q" }):wait()
+    vim.wait(200)
+    vim
+      .system({
+        "tmux",
+        "send-keys",
+        "-t",
+        ":.2",
+        "uv run textual run --dev main.py",
+        "Enter",
+      })
+      :wait()
   end,
 })
 
