@@ -3,6 +3,8 @@ return {
 
   { "norcalli/nvim-terminal.lua", opts = {}, ft = "terminal" },
 
+  { "echasnovski/mini.align", version = false, opts = {} },
+
   {
     "tpope/vim-surround",
     keys = { "ys", "ds", "cs" },
