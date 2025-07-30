@@ -35,7 +35,7 @@ return { -- "nvim-lualine/lualine.nvim",
           { "lsp_status", separator = {} },
           { "diff", separator = {} },
         },
-        lualine_y = { "filetype", "progress" },
+        lualine_y = { "searchcount", "filetype", "progress" },
         lualine_z = {
           {
             "location",

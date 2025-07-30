@@ -34,9 +34,11 @@ vim.o.colorcolumn = "80"
 vim.o.cursorline = true
 vim.o.wrap = true
 vim.o.breakindent = true
+
 vim.o.winborder = "single"
 vim.o.confirm = true -- confirm on save
 vim.o.timeoutlen = 500 -- decrease mapped sequence wait time
+
 vim.o.splitright = true
 vim.o.splitbelow = false
 
