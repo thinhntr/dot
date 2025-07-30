@@ -1,6 +1,6 @@
 [tools]
 fzf = "latest"
-go = "latest"
+go = "1.24.5"
 neovim = "0.11.2"
 starship = "latest"
 stylua = "latest"
@@ -11,3 +11,7 @@ python = "latest"
 bat = "latest"
 ffmpeg = "latest"
 fd = "latest"
+uv = "latest"
+
+[settings]
+idiomatic_version_file_enable_tools = []
