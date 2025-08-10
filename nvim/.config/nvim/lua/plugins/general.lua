@@ -51,6 +51,7 @@ return {
           macchiato = {
             base = "#232136",
             mantle = "#232136",
+            green = "#80c2cc",
           },
         },
         integrations = {
