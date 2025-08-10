@@ -42,6 +42,11 @@ return {
         flavour = "macchiato",
         no_italic = true,
         no_bold = true,
+        dim_inactive = {
+          enabled = true,
+          shade = "crust",
+          percentage = 0.15,
+        },
         color_overrides = {
           macchiato = {
             base = "#232136",
