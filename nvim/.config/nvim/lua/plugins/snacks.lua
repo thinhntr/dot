@@ -53,7 +53,7 @@ return { -- "folke/snacks.nvim"
       desc = "find buffers",
     },
     {
-      "<leader><leader>",
+      "<leader>ff",
       function()
         Snacks.picker.files()
       end,
@@ -75,7 +75,7 @@ return { -- "folke/snacks.nvim"
       mode = { "n", "x" },
     },
     {
-      "<leader>ff",
+      "<leader><leader>",
       function()
         Snacks.picker.grep({ hidden = true })
       end,
