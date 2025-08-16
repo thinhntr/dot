@@ -44,6 +44,9 @@ return { -- "nvim-lualine/lualine.nvim",
           },
         },
       },
+      winbar = {
+        lualine_c = { { "navic" } },
+      },
     }
 
     local harpoon = require("harpoon")

@@ -90,6 +90,14 @@ return {
     end,
   },
 
+  {
+    "SmiteshP/nvim-navic",
+    opts = {
+      lsp = { auto_attach = true },
+      highlight = true,
+    },
+  },
+
   { -- "folke/lazydev.nvim"
     -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
     "folke/lazydev.nvim",

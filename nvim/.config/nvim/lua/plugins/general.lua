@@ -11,26 +11,6 @@ return {
     dependencies = "tpope/vim-repeat",
   },
 
-  {
-    "Bekaboo/dropbar.nvim",
-    event = "VeryLazy",
-    opts = function()
-      local sources = require("dropbar.configs").opts.sources
-      local ts_valid_types = vim.tbl_filter(function(value)
-        return value ~= "pair"
-      end, sources.treesitter.valid_types)
-
-      return {
-        sources = {
-          path = { max_depth = 0 },
-          treesitter = {
-            valid_types = ts_valid_types,
-          },
-        },
-      }
-    end,
-  },
-
   { -- "catppuccin/nvim",
     "catppuccin/nvim",
     lazy = false,
@@ -66,6 +46,10 @@ return {
           snacks = {
             enabled = true,
             indent_scope_color = "lavender",
+          },
+          navic = {
+            enabled = true,
+            custom_bg = "NONE",
           },
         },
       })
