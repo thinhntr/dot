@@ -40,18 +40,25 @@ return {
     config = function()
       require("catppuccin").setup({
         flavour = "macchiato",
+        float = {
+          transparent = true,
+          solid = true,
+        },
         no_italic = true,
         no_bold = true,
         dim_inactive = {
           enabled = true,
+          ---@diagnostic disable-next-line: assign-type-mismatch
           shade = "crust",
           percentage = 0.15,
         },
         color_overrides = {
           macchiato = {
-            base = "#232136",
-            mantle = "#232136",
-            green = "#80c2cc",
+            base = "#232136", -- original = "#24273a"
+            mantle = "#2a273f", -- original = "#1e2030"
+            crust = "#393552", -- original = "#181926"
+            green = "#89ced9", -- original = "#a6da95"
+            pink = "#e68ca5", -- original = "#f5bde6"
           },
         },
         integrations = {
