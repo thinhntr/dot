@@ -77,7 +77,7 @@ return {
     "A7Lavinraj/fyler.nvim",
     lazy = vim.fn.argc(-1) == 0,
     dependencies = { "echasnovski/mini.icons" },
-    branch = "stable",
+    cmd = { "Fyler" },
     keys = { { "<leader>e", "<CMD>Fyler<CR>" } },
     opts = {
       mappings = {
@@ -92,6 +92,7 @@ return {
         explorer = {
           close_on_select = true,
           default_explorer = true,
+          git_status = false,
           win = { kind = "split_right_most" },
         },
       },
