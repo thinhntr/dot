@@ -32,7 +32,7 @@ vim.o.guicursor = ""
 vim.o.signcolumn = "auto"
 vim.o.colorcolumn = "80"
 vim.o.cursorline = true
-vim.o.wrap = true
+vim.o.wrap = false
 vim.o.breakindent = true
 
 vim.o.winbar = " "
