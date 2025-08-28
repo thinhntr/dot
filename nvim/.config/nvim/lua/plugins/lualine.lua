@@ -2,6 +2,68 @@ return { -- "nvim-lualine/lualine.nvim",
   "nvim-lualine/lualine.nvim",
   event = "VeryLazy",
   opts = function()
+    local harpoon = require("harpoon")
+
+    harpoon:setup()
+
+    vim.keymap.set("n", "<leader>a", function()
+      harpoon:list():add()
+    end)
+
+    vim.keymap.set("n", "<leader>h", function()
+      harpoon.ui:toggle_quick_menu(harpoon:list())
+    end)
+
+    for i = 1, 9 do
+      vim.keymap.set("n", "<leader>" .. i, function()
+        harpoon:list():select(i)
+      end)
+    end
+
+    -- show harpoon files in statusline
+    local highlight = require("lualine.highlight")
+    local barb = require("lualine.component"):extend()
+
+    function barb:init(options)
+      barb.super.init(self, options)
+      self.options = self.options or {}
+      self.hl_colors = {
+        active = highlight.create_component_highlight_group(
+          { fg = "#b7bdf8" },
+          "barb_active",
+          self.options
+        ),
+        inactive = highlight.create_component_highlight_group(
+          { fg = "#6e738d" },
+          "barb_inactive",
+          self.options
+        ),
+      }
+    end
+
+    function barb:update_status()
+      local root_dir = harpoon:list().config:get_root_dir()
+      local current_filepath = vim.api.nvim_buf_get_name(0)
+      local files = {}
+
+      for i, item in ipairs(harpoon:list().items) do
+        local filepath = item.value
+        local fullpath = filepath
+        if string.sub(filepath, 1, 1) ~= "/" then
+          fullpath = root_dir .. "/" .. filepath
+        end
+        local active = fullpath == current_filepath
+        local fname = vim.fn.fnamemodify(filepath, ":t")
+        local file = string.format("%d %s  ", i, fname)
+        local hl_file = highlight.component_format_highlight(
+          active and self.hl_colors.active or self.hl_colors.inactive
+        ) .. file
+        table.insert(files, hl_file)
+      end
+
+      return table.concat(files, "")
+    end
+
     local opts = {
       options = {
         icons_enabled = false,
@@ -26,10 +88,7 @@ return { -- "nvim-lualine/lualine.nvim",
             end,
           },
         },
-        lualine_c = {
-          { "%-00.38{ expand('%:~:.') } %m", separator = {} },
-          { "%=", separator = {} },
-        },
+        lualine_c = { { barb } },
         lualine_x = {
           { "diagnostics", separator = {} },
           { "lsp_status", separator = {} },
@@ -45,38 +104,14 @@ return { -- "nvim-lualine/lualine.nvim",
         },
       },
       winbar = {
-        lualine_c = { { "navic" } },
+        lualine_c = { { "navic", color_correction = "static" } },
+        lualine_x = { { "filename", path = 1 } },
       },
     }
-
-    local harpoon = require("harpoon")
-    harpoon:setup()
-    vim.keymap.set("n", "<leader>a", function()
-      harpoon:list():add()
-    end)
-    vim.keymap.set("n", "<leader>h", function()
-      harpoon.ui:toggle_quick_menu(harpoon:list())
-    end)
-
-    local harpoon_component = {
-      "harpoon2",
-      indicators = {},
-      active_indicators = {},
-    }
-    for i = 1, 9 do
-      vim.keymap.set("n", "<leader>" .. i, function()
-        harpoon:list():select(i)
-      end)
-      table.insert(harpoon_component.indicators, "" .. i)
-      table.insert(harpoon_component.active_indicators, "[" .. i .. "]")
-    end
-
-    table.insert(opts.sections.lualine_c, harpoon_component)
 
     return opts
   end,
   dependencies = {
-    "letieu/harpoon-lualine",
     { -- "ThePrimeagen/harpoon",
       "ThePrimeagen/harpoon",
       branch = "harpoon2",
