@@ -57,35 +57,8 @@ return {
     end,
   },
 
-  {
-    "A7Lavinraj/fyler.nvim",
-    lazy = vim.fn.argc(-1) == 0,
-    dependencies = { "echasnovski/mini.icons" },
-    cmd = { "Fyler" },
-    keys = { { "<leader>e", "<CMD>Fyler<CR>" } },
-    opts = {
-      mappings = {
-        explorer = {
-          ["<Esc>"] = "CloseView",
-          ["%"] = "SelectVSplit",
-          ['"'] = "SelectSplit",
-          ["-"] = "GotoParent",
-        },
-      },
-      views = {
-        explorer = {
-          close_on_select = true,
-          default_explorer = true,
-          git_status = false,
-          win = { kind = "split_right_most" },
-        },
-      },
-    },
-  },
-
   { -- "stevearc/oil.nvim",
     "stevearc/oil.nvim",
-    enabled = false,
     lazy = vim.fn.argc(-1) == 0,
     opts = {
       default_file_explorer = true,
