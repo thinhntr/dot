@@ -50,18 +50,25 @@ return { -- "folke/snacks.nvim"
       desc = "find buffers",
     },
     {
-      "<leader>ff",
-      function()
-        Snacks.picker.files()
-      end,
-      desc = "find files",
-    },
-    {
-      "<leader>fa",
+      "<leader><leader>",
       function()
         Snacks.picker.files({ hidden = true })
       end,
       desc = "find all files",
+    },
+    {
+      "<leader>ff",
+      function()
+        Snacks.picker.git_files()
+      end,
+      desc = "find git files",
+    },
+    {
+      "<leader>fg",
+      function()
+        Snacks.picker.grep({ hidden = true })
+      end,
+      desc = "grep",
     },
     {
       "<leader>fw",
@@ -72,25 +79,11 @@ return { -- "folke/snacks.nvim"
       mode = { "n", "x" },
     },
     {
-      "<leader><leader>",
-      function()
-        Snacks.picker.grep({ hidden = true })
-      end,
-      desc = "grep",
-    },
-    {
       "<leader>fd",
       function()
         Snacks.picker.diagnostics()
       end,
       desc = "find diagnostics",
-    },
-    {
-      "<leader>fg",
-      function()
-        Snacks.picker.git_files()
-      end,
-      desc = "find git files",
     },
     {
       "<leader>fr",
