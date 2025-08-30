@@ -25,10 +25,7 @@ return { -- "folke/snacks.nvim"
         },
       },
     },
-    -- statuscolumn = {
-    --   left = { "sign" },
-    --   right = { "fold", "git" },
-    -- },
+    statuscolumn = {},
   },
   keys = {
     {
