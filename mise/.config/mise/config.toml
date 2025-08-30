@@ -1,6 +1,6 @@
 [tools]
 fzf = "latest"
-go = "1.24.5"
+go = "1.25"
 neovim = "0.11.2"
 starship = "latest"
 stylua = "latest"
