@@ -7,7 +7,7 @@ return { -- "folke/snacks.nvim"
       timeout = 10000,
     },
     picker = {
-      layout = { preset = "default", preview = false },
+      layout = { preset = "ivy", preview = false },
       matcher = { frecency = true },
       formatters = {
         file = { truncate = 120 },

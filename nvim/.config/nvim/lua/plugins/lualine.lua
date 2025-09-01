@@ -105,7 +105,7 @@ return { -- "nvim-lualine/lualine.nvim",
       },
       winbar = {
         lualine_c = { { "navic", color_correction = "static" } },
-        lualine_x = { { "filename", path = 1 } },
+        lualine_y = { { "filename", path = 1 } },
       },
     }
 
