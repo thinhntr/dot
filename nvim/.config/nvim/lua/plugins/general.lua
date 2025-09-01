@@ -3,7 +3,9 @@ return {
 
   { "norcalli/nvim-terminal.lua", opts = {}, ft = "terminal" },
 
-  { "echasnovski/mini.align", version = false, opts = {} },
+  { "nvim-mini/mini.align", version = false, opts = {} },
+
+  { "nvim-mini/mini.ai", version = false, opts = { n_lines = 500 } },
 
   {
     "tpope/vim-surround",
@@ -59,16 +61,48 @@ return {
 
   { -- "stevearc/oil.nvim",
     "stevearc/oil.nvim",
+    enabled = false,
     lazy = vim.fn.argc(-1) == 0,
     opts = {
-      default_file_explorer = true,
+      default_file_explorer = false,
       view_options = { show_hidden = true },
     },
-    keys = { { "<leader>e", "<CMD>Oil<CR>" } },
+    keys = { { "<leader>k", "<CMD>Oil<CR>" } },
     dependencies = {
-      "echasnovski/mini.icons",
+      "nvim-mini/mini.icons",
       version = false,
       opts = {},
+    },
+  },
+
+  {
+    "nvim-mini/mini.files",
+    version = false,
+    opts = {
+      opttions = {
+        use_as_default_explorer = false,
+      },
+      mappings = {
+        go_in_plus = "<cr>",
+      },
+    },
+    keys = {
+      {
+        "<leader>e",
+        "<cmd>lua MiniFiles.open(vim.api.nvim_buf_get_name(0))<cr>",
+      },
+    },
+  },
+
+  {
+    "hedyhli/outline.nvim",
+    lazy = true,
+    cmd = { "Outline", "OutlineOpen" },
+    keys = { { "<leader>o", "<cmd>Outline<CR>", desc = "Toggle outline" } },
+    opts = {
+      outline_window = {
+        position = "left",
+      },
     },
   },
 
