@@ -26,11 +26,13 @@ return {
     require("lazy.core.loader").add_to_rtp(plugin)
     require("nvim-treesitter.query_predicates")
   end,
-  opts = {
-    highlight = { enable = true },
-    indent = { enable = true },
-    ensure_installed = ts_ensure_installed,
-  },
+  config = function()
+    require("nvim-treesitter.configs").setup({
+      highlight = { enable = true },
+      indent = { enable = true },
+      ensure_installed = ts_ensure_installed,
+    })
+  end,
   dependencies = { -- "nvim-treesitter/nvim-treesitter-context",
     "nvim-treesitter/nvim-treesitter-context",
     opts = {
