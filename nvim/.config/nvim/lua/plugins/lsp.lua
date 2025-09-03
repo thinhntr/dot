@@ -116,11 +116,18 @@ return {
     "saghen/blink.cmp",
     dependencies = {
       "L3MON4D3/LuaSnip",
-      "echasnovski/mini.icons",
+      "nvim-mini/mini.icons",
     },
     version = "1.*",
     opts = {
       signature = { enabled = true },
+      keymap = {
+        ["<Tab>"] = false,
+        ["<S-Tab>"] = false,
+        ["<C-y>"] = { "accept" },
+        ["<C-l>"] = { "snippet_forward", "fallback" },
+        ["<C-h"] = { "snippet_backward", "fallback" },
+      },
       sources = {
         providers = {
           lazydev = {
