@@ -38,7 +38,7 @@ return {
     opts = {
       trim_scope = "outer",
       mode = "topline",
-      max_lines = 6,
+      max_lines = 3,
       min_window_height = 20,
     },
   },
