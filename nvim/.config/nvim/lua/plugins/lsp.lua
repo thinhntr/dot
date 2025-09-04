@@ -124,7 +124,6 @@ return {
       keymap = {
         ["<Tab>"] = false,
         ["<S-Tab>"] = false,
-        ["<C-y>"] = { "accept" },
         ["<C-l>"] = { "snippet_forward", "fallback" },
         ["<C-h"] = { "snippet_backward", "fallback" },
       },
@@ -138,6 +137,8 @@ return {
       },
       snippets = { preset = "luasnip" },
       completion = {
+        ghost_text = { enabled = true },
+        list = { selection = { preselect = true, auto_insert = false } },
         menu = {
           draw = {
             columns = {
