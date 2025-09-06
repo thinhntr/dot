@@ -79,9 +79,6 @@ return {
     "nvim-mini/mini.files",
     version = false,
     opts = {
-      opttions = {
-        use_as_default_explorer = false,
-      },
       mappings = {
         go_in_plus = "<cr>",
       },
