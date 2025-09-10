@@ -52,7 +52,7 @@ vim.o.splitbelow = false
 vim.keymap.set("n", "Q", "<Nop>", { silent = true })
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 vim.keymap.set("i", "<C-c>", "<Esc>")
-vim.keymap.set("i", "<C-l>", "<C-o>a")
+vim.keymap.set("i", "<C-l>", "<C-o>a", { desc = "escape auto pair" })
 
 vim.keymap.set("n", "n", "nzz", { desc = "next / result and center" })
 vim.keymap.set("n", "N", "Nzz", { desc = "next ? result and center" })
@@ -64,6 +64,9 @@ vim.keymap.set("n", "<C-q>", "<C-w><C-q>", { desc = "Close window" })
 -- yank/delete shortcuts
 vim.keymap.set("x", "<leader>p", '"_dP')
 vim.keymap.set({ "n", "v" }, "<leader>d", '"_d')
+vim.keymap.set({ "n", "v" }, "<leader>D", '"_D')
+vim.keymap.set({ "n", "v" }, "<leader>c", '"_c')
+vim.keymap.set({ "n", "v" }, "<leader>C", '"_C')
 vim.keymap.set({ "n", "v" }, "<leader>y", '"+y')
 vim.keymap.set({ "n", "v" }, "<leader>Y", '"+Y')
 

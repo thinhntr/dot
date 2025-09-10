@@ -1,15 +1,17 @@
 local function kickstart_lsp_attach(event)
-  local map = function(keys, func, mode)
+  local map = function(keys, func, desc, mode)
     mode = mode or "n"
-    vim.keymap.set(mode, keys, func, { buffer = event.buf })
+    desc = desc or "n"
+    pcall(vim.keymap.del, mode, keys)
+    vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = desc })
   end
 
-  map("grr", Snacks.picker.lsp_references)
-  map("gri", Snacks.picker.lsp_implementations)
-  map("grd", Snacks.picker.lsp_definitions)
-  map("gO", Snacks.picker.lsp_symbols)
-  map("gW", Snacks.picker.lsp_workspace_symbols)
-  map("grt", Snacks.picker.lsp_type_definitions)
+  map("grr", Snacks.picker.lsp_references, "snacks references")
+  map("gri", Snacks.picker.lsp_implementations, "snacks implementations")
+  map("grd", Snacks.picker.lsp_definitions, "snacks definitions")
+  map("gO", Snacks.picker.lsp_symbols, "snacks symbols")
+  map("gW", Snacks.picker.lsp_workspace_symbols, "snacks workspace_symbols")
+  map("grt", Snacks.picker.lsp_type_definitions, "snacks type_definitions")
 
   local client = vim.lsp.get_client_by_id(event.data.client_id)
   if
@@ -126,6 +128,7 @@ return {
         ["<S-Tab>"] = false,
         ["<C-l>"] = { "snippet_forward", "fallback" },
         ["<C-h"] = { "snippet_backward", "fallback" },
+        ["<C-s"] = { "show_signature", "hide_signature" },
       },
       sources = {
         providers = {
