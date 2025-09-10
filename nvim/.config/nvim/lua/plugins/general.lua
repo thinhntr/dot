@@ -7,11 +7,7 @@ return {
 
   { "nvim-mini/mini.ai", version = false, opts = { n_lines = 500 } },
 
-  {
-    "tpope/vim-surround",
-    keys = { "ys", "ds", "cs" },
-    dependencies = "tpope/vim-repeat",
-  },
+  { "nvim-mini/mini.surround", version = false, opts = {} },
 
   { -- "catppuccin/nvim",
     "catppuccin/nvim",

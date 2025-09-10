@@ -18,6 +18,7 @@
   "mini.align": { "branch": "main", "commit": "ab6777ca0fdfe8e4cfe931e3b0b5d98c719c3c1d" },
   "mini.files": { "branch": "main", "commit": "34a730a6bdb09c3e6755fe34b20a78a5d81d21c4" },
   "mini.icons": { "branch": "main", "commit": "f9a177c11daa7829389b7b6eaaec8b8a5c47052d" },
+  "mini.surround": { "branch": "main", "commit": "e170a2dde4b0a8905c9bb218ed428be94ec0b255" },
   "nvim-lspconfig": { "branch": "master", "commit": "cb4765526f7201ce4ff0c49888f80c18da614e68" },
   "nvim-navic": { "branch": "master", "commit": "f887d794a0f4594882814d7780980a949200a238" },
   "nvim-terminal.lua": { "branch": "master", "commit": "095f98aaa7265628a72cd2706350c091544b5602" },
@@ -30,6 +31,4 @@
   "promise-async": { "branch": "main", "commit": "119e8961014c9bfaf1487bf3c2a393d254f337e2" },
   "snacks.nvim": { "branch": "main", "commit": "bc0630e43be5699bb94dadc302c0d21615421d93" },
   "vim-fugitive": { "branch": "master", "commit": "61b51c09b7c9ce04e821f6cf76ea4f6f903e3cf4" },
-  "vim-repeat": { "branch": "master", "commit": "65846025c15494983dafe5e3b46c8f88ab2e9635" },
-  "vim-surround": { "branch": "master", "commit": "3d188ed2113431cf8dac77be61b842acb64433d9" }
 }
