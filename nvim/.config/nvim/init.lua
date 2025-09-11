@@ -52,7 +52,7 @@ vim.o.splitbelow = false
 vim.keymap.set("n", "Q", "<Nop>", { silent = true })
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 vim.keymap.set("i", "<C-c>", "<Esc>")
-vim.keymap.set("i", "<C-l>", "<C-o>a", { desc = "escape auto pair" })
+vim.keymap.set("i", "<C-l>", "<Right>", { desc = "escape auto pair" })
 
 vim.keymap.set("n", "n", "nzz", { desc = "next / result and center" })
 vim.keymap.set("n", "N", "Nzz", { desc = "next ? result and center" })

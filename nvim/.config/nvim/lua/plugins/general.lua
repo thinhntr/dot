@@ -5,9 +5,13 @@ return {
 
   { "nvim-mini/mini.align", version = false, opts = {} },
 
-  { "nvim-mini/mini.ai", version = false, opts = { n_lines = 500 } },
+  { "nvim-mini/mini.ai", version = false, opts = { n_lines = 10000 } },
 
-  { "nvim-mini/mini.surround", version = false, opts = {} },
+  {
+    "nvim-mini/mini.surround",
+    version = false,
+    opts = { mappings = { replace = "sc" } },
+  },
 
   { -- "catppuccin/nvim",
     "catppuccin/nvim",
