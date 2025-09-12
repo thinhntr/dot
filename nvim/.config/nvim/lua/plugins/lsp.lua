@@ -127,8 +127,8 @@ return {
         ["<Tab>"] = false,
         ["<S-Tab>"] = false,
         ["<C-l>"] = { "snippet_forward", "fallback" },
-        ["<C-h"] = { "snippet_backward", "fallback" },
-        ["<C-s"] = { "show_signature", "hide_signature" },
+        ["<C-h>"] = { "snippet_backward", "fallback" },
+        ["<C-s>"] = { "show_signature", "hide_signature" },
       },
       sources = {
         providers = {
