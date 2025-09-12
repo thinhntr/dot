@@ -253,6 +253,13 @@ return { -- "folke/snacks.nvim"
       end,
       desc = "snacks picker",
     },
+    {
+      "<leader>n",
+      function()
+        Snacks.notifier.show_history()
+      end,
+      desc = "snacks notification history",
+    },
   },
   dependencies = {
     "dmtrKovalenko/fff.nvim",
