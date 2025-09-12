@@ -3,14 +3,31 @@ return {
 
   { "norcalli/nvim-terminal.lua", opts = {}, ft = "terminal" },
 
+  { "nvim-mini/mini.icons", version = false, opts = {} },
   { "nvim-mini/mini.align", version = false, opts = {} },
-
   { "nvim-mini/mini.ai", version = false, opts = { n_lines = 10000 } },
-
   {
     "nvim-mini/mini.surround",
     version = false,
     opts = { mappings = { replace = "sc" } },
+    keys = {
+      { "saa", "sa_", remap = true },
+    },
+  },
+  {
+    "nvim-mini/mini.files",
+    version = false,
+    opts = {
+      mappings = {
+        go_in_plus = "<cr>",
+      },
+    },
+    keys = {
+      {
+        "<leader>e",
+        "<cmd>lua MiniFiles.open(vim.api.nvim_buf_get_name(0))<cr>",
+      },
+    },
   },
 
   { -- "catppuccin/nvim",
@@ -57,38 +74,6 @@ return {
       })
       vim.cmd.colorscheme("catppuccin")
     end,
-  },
-
-  { -- "stevearc/oil.nvim",
-    "stevearc/oil.nvim",
-    enabled = false,
-    lazy = vim.fn.argc(-1) == 0,
-    opts = {
-      default_file_explorer = false,
-      view_options = { show_hidden = true },
-    },
-    keys = { { "<leader>k", "<CMD>Oil<CR>" } },
-    dependencies = {
-      "nvim-mini/mini.icons",
-      version = false,
-      opts = {},
-    },
-  },
-
-  {
-    "nvim-mini/mini.files",
-    version = false,
-    opts = {
-      mappings = {
-        go_in_plus = "<cr>",
-      },
-    },
-    keys = {
-      {
-        "<leader>e",
-        "<cmd>lua MiniFiles.open(vim.api.nvim_buf_get_name(0))<cr>",
-      },
-    },
   },
 
   {
