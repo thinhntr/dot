@@ -20,7 +20,7 @@ return {
     dependencies = "lewis6991/gitsigns.nvim",
     cmd = { "Git", "G" },
     keys = {
-      { "<leader>gg", "<cmd>Git<cr>" },
+      { "<leader>gg", "<cmd>vertical Git<cr><cmd>vert resize 70<cr>" },
       { "<leader>gs", "<cmd>Git difftool --name-status<cr>" },
     },
   },
