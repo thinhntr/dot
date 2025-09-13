@@ -3,9 +3,16 @@ return {
 
   { "norcalli/nvim-terminal.lua", opts = {}, ft = "terminal" },
 
-  { "nvim-mini/mini.icons", version = false, opts = {} },
   { "nvim-mini/mini.align", version = false, opts = {} },
   { "nvim-mini/mini.ai", version = false, opts = { n_lines = 10000 } },
+  {
+    "nvim-mini/mini.icons",
+    version = false,
+    config = function()
+      require("mini.icons").setup()
+      MiniIcons.mock_nvim_web_devicons()
+    end,
+  },
   {
     "nvim-mini/mini.surround",
     version = false,
