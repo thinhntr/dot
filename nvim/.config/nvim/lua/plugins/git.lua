@@ -1,5 +1,19 @@
 return {
   {
+    "NeogitOrg/neogit",
+    opts = {
+      graph_style = "kitty",
+    },
+    keys = {
+      { "<leader>gg", "<cmd>Neogit<cr>", desc = "Neogit" },
+    },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "sindrets/diffview.nvim",
+      "folke/snacks.nvim",
+    },
+  },
+  {
     "lewis6991/gitsigns.nvim",
     event = "VeryLazy",
     keys = {
@@ -17,6 +31,7 @@ return {
 
   { -- "tpope/vim-fugitive",
     "tpope/vim-fugitive",
+    cond = false,
     dependencies = "lewis6991/gitsigns.nvim",
     cmd = { "Git", "G" },
     keys = {
