@@ -16,6 +16,7 @@ return {
   {
     "nvim-mini/mini.surround",
     version = false,
+    lazy = false,
     opts = { mappings = { replace = "sc" } },
     keys = {
       { "saa", "sa_", remap = true },
