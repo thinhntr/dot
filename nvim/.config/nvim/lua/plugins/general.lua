@@ -27,6 +27,7 @@ return {
     opts = {
       mappings = {
         go_in_plus = "<cr>",
+        synchronize = "<C-c>",
       },
     },
     keys = {
