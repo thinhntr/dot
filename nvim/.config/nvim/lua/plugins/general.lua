@@ -27,8 +27,8 @@ return {
     version = false,
     opts = {
       mappings = {
-        go_in_plus = "<cr>",
-        synchronize = "<C-c>",
+        go_in_plus = "l",
+        synchronize = ";",
       },
     },
     keys = {
