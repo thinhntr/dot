@@ -16,6 +16,8 @@ SAVEHIST=10000
 # -------------------------------------------
 bindkey -e # use emacs keymaps
 
+bindkey "^[[3~" delete-char # hack: fix tmux removes delete-char keybind
+
 # auto completion
 autoload -U compinit; compinit
 _comp_options+=(globdots) # With hidden files
