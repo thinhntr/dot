@@ -14,7 +14,9 @@ SAVEHIST=10000
 # -------------------------------------------
 # | ZSH CUSTOMIZATIONS                      |
 # -------------------------------------------
-bindkey -e
+bindkey -e # use emacs keymaps
+
+# auto completion
 autoload -U compinit; compinit
 _comp_options+=(globdots) # With hidden files
 zstyle ':completion:*' menu select
