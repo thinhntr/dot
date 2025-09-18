@@ -3,8 +3,13 @@ return {
 
   { "norcalli/nvim-terminal.lua", opts = {}, ft = "terminal" },
 
-  { "nvim-mini/mini.align", version = false, opts = {} },
-  { "nvim-mini/mini.ai", version = false, opts = { n_lines = 10000 } },
+  { "nvim-mini/mini.align", version = false, opts = {}, keys = { "ga", "gA" } },
+  {
+    "nvim-mini/mini.ai",
+    version = false,
+    event = "VeryLazy",
+    opts = { n_lines = 10000 },
+  },
   {
     "nvim-mini/mini.icons",
     version = false,
