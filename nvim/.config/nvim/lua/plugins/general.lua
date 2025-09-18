@@ -19,7 +19,7 @@ return {
     lazy = false,
     opts = { mappings = { replace = "sc" } },
     keys = {
-      { "saa", "sa_", remap = true },
+      { "ssa", "sa_", remap = true },
     },
   },
   {
