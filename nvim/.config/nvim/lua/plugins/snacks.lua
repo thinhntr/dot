@@ -242,7 +242,10 @@ return { -- "folke/snacks.nvim"
     {
       "<leader>fn",
       function()
-        Snacks.picker.files({ cwd = vim.fn.stdpath("config") })
+        Snacks.picker.files({
+          hidden = true,
+          cwd = vim.env.HOME .. "/projects/dot",
+        })
       end,
       desc = "find neovim config files",
     },
