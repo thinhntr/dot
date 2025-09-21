@@ -57,6 +57,9 @@ vim.keymap.set("i", "<C-l>", "<Right>", { desc = "escape auto pair" })
 vim.keymap.set("n", "n", "nzz", { desc = "next / result and center" })
 vim.keymap.set("n", "N", "Nzz", { desc = "next ? result and center" })
 
+vim.keymap.set("n", "<C-n>", vim.cmd.cnext, { desc = "quickfix next item" })
+vim.keymap.set("n", "<C-p>", vim.cmd.cprev, { desc = "quickfix prev item" })
+
 -- window nav shortcuts
 vim.keymap.set("n", "<C-h>", "<C-w><C-w>", { desc = "Cycle through windows" })
 vim.keymap.set("n", "<C-q>", "<C-w><C-q>", { desc = "Close window" })
