@@ -74,7 +74,7 @@ return {
         ensure_installed = {
           "gopls",
           "lua_ls",
-          "pyrefly",
+          "basedpyright",
           "ruff",
           "stylua",
           "vimls",
@@ -89,6 +89,14 @@ return {
         },
         ensure_installed = {},
         automatic_installation = false,
+      })
+
+      vim.lsp.config("basedpyright", {
+        settings = {
+          basedpyright = {
+            typeCheckingMode = "basic",
+          },
+        },
       })
     end,
   },

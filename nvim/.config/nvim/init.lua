@@ -54,8 +54,10 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 vim.keymap.set("i", "<C-c>", "<Esc>")
 vim.keymap.set("i", "<C-l>", "<Right>", { desc = "escape auto pair" })
 
-vim.keymap.set("n", "n", "nzz", { desc = "next / result and center" })
-vim.keymap.set("n", "N", "Nzz", { desc = "next ? result and center" })
+vim.keymap.set("n", "n", "nzz", { desc = "next / and center" })
+vim.keymap.set("n", "N", "Nzz", { desc = "prev ? and center" })
+vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "down <C-d> and center" })
+vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "up <C-u> and center" })
 
 vim.keymap.set("n", "<C-n>", vim.cmd.cnext, { desc = "quickfix next item" })
 vim.keymap.set("n", "<C-p>", vim.cmd.cprev, { desc = "quickfix prev item" })
