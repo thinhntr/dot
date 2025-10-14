@@ -3,6 +3,9 @@ return {
     "NeogitOrg/neogit",
     opts = {
       graph_style = "kitty",
+      commit_editor = {
+        spell_check = false,
+      },
     },
     keys = {
       { "<leader>gg", "<cmd>Neogit<cr>", desc = "Neogit" },

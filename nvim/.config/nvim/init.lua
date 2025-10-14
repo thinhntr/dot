@@ -98,6 +98,16 @@ vim.keymap.set(
   { desc = "execute highlighted text" }
 )
 
+vim.keymap.set("n", "<leader>r", function()
+  local count = vim.fn.system("tmux list-panes | wc -l")
+  if tonumber(count) < 2 then
+    vim.fn.system("tmux splitw -h -b -l 60")
+  end
+  local cmd = "make"
+  vim.system({ "tmux", "send-keys", "-t", ":.1", cmd, "Enter" })
+  vim.notify("trunner: ok")
+end, { desc = "split tmux panes and run stuff" })
+
 --[[
 ===================
 | autocommands    |
@@ -117,21 +127,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   ),
   callback = function()
     vim.hl.on_yank()
-  end,
-})
-
-vim.api.nvim_create_autocmd("BufWritePost", {
-  pattern = { "*.replaceme" },
-  group = vim.api.nvim_create_augroup("TmuxRunner", { clear = true }),
-  callback = function()
-    local count = vim.fn.system("tmux list-panes | wc -l")
-    if tonumber(count) < 2 then
-      vim.fn.system("tmux splitw -h")
-    end
-    vim.system({ "tmux", "send-keys", "-t", ":.2", "C-q" })
-    vim.wait(300)
-    local cmd = "uv run --dev main.py"
-    vim.system({ "tmux", "send-keys", "-t", ":.2", cmd, "Enter" })
   end,
 })
 
