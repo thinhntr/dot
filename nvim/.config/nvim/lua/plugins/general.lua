@@ -22,9 +22,18 @@ return {
     "nvim-mini/mini.surround",
     version = false,
     lazy = false,
-    opts = { mappings = { replace = "sc" } },
+    opts = {
+      mappings = {
+        add = "ys",
+        delete = "ds",
+        find = "",
+        find_left = "",
+        highlight = "",
+        replace = "cs",
+      },
+    },
     keys = {
-      { "ssa", "sa_", remap = true },
+      { "yss", "ys_", remap = true },
     },
   },
   {
