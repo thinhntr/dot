@@ -133,7 +133,7 @@ end
 
 return { -- "folke/snacks.nvim"
   "folke/snacks.nvim",
-  priority = 1000,
+  priority = 412054,
   lazy = false,
   opts = {
     styles = {

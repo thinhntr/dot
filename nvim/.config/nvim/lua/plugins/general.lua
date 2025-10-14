@@ -44,6 +44,21 @@ return {
     },
   },
 
+  {
+    "nvim-mini/mini.hues",
+    cond = true,
+    lazy = false,
+    priority = 5000,
+    config = function()
+      require("mini.hues").setup({
+        background = "#1c2231",
+        foreground = "#c4c7cd",
+      })
+      local palette = require("mini.hues").get_palette()
+      vim.api.nvim_set_hl(0, "NonText", { fg = palette.fg_mid2 })
+    end,
+  },
+
   { -- "catppuccin/nvim",
     "catppuccin/nvim",
     lazy = false,
@@ -86,7 +101,7 @@ return {
           },
         },
       })
-      vim.cmd.colorscheme("catppuccin")
+      -- vim.cmd.colorscheme("catppuccin")
     end,
   },
 
