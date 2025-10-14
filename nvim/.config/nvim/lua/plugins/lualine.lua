@@ -92,9 +92,8 @@ return { -- "nvim-lualine/lualine.nvim",
         lualine_x = {
           { "diagnostics", separator = {} },
           { "lsp_status", separator = {} },
-          { "diff", separator = {} },
         },
-        lualine_y = { "searchcount", "filetype", "progress" },
+        lualine_y = { "searchcount", "progress" },
         lualine_z = {
           {
             "location",
@@ -105,7 +104,10 @@ return { -- "nvim-lualine/lualine.nvim",
       },
       winbar = {
         lualine_c = { { "navic", color_correction = "static" } },
-        lualine_y = { { "filename", path = 1 } },
+        lualine_x = { { "diff", separator = {} }, "filetype" },
+        lualine_z = {
+          { "filename", path = 5, shorting_target = 20 },
+        },
       },
     }
 

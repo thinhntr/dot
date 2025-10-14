@@ -38,7 +38,6 @@ vim.o.breakindent = true
 vim.o.winbar = " "
 vim.o.winborder = "single"
 vim.o.confirm = true -- confirm on save
-vim.o.timeoutlen = 500 -- decrease mapped sequence wait time
 
 vim.o.splitright = true
 vim.o.splitbelow = false
@@ -59,8 +58,8 @@ vim.keymap.set("n", "N", "Nzz", { desc = "prev ? and center" })
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "down <C-d> and center" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "up <C-u> and center" })
 
-vim.keymap.set("n", "<C-n>", vim.cmd.cnext, { desc = "quickfix next item" })
-vim.keymap.set("n", "<C-p>", vim.cmd.cprev, { desc = "quickfix prev item" })
+vim.keymap.set("n", "<C-n>", "<cmd>cnext<cr>", { desc = "quickfix next item" })
+vim.keymap.set("n", "<C-p>", "<cmd>cprev<cr>", { desc = "quickfix prev item" })
 
 -- window nav shortcuts
 vim.keymap.set("n", "<C-h>", "<C-w><C-w>", { desc = "Cycle through windows" })
