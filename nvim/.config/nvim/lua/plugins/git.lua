@@ -3,9 +3,7 @@ return {
     "NeogitOrg/neogit",
     opts = {
       graph_style = "kitty",
-      commit_editor = {
-        spell_check = false,
-      },
+      commit_editor = { spell_check = false },
     },
     keys = {
       { "<leader>gg", "<cmd>Neogit<cr>", desc = "Neogit" },
@@ -29,17 +27,6 @@ return {
       { "<leader>gh", "<cmd>Gitsigns setqflist<cr>" },
       { "<leader>g-", ":Gitsigns stage_hunk<cr>", mode = { "n", "v" } },
       { "<leader>gr", ":Gitsigns reset_hunk<cr>", mode = { "n", "v" } },
-    },
-  },
-
-  { -- "tpope/vim-fugitive",
-    "tpope/vim-fugitive",
-    cond = false,
-    dependencies = "lewis6991/gitsigns.nvim",
-    cmd = { "Git", "G" },
-    keys = {
-      { "<leader>gg", "<cmd>vertical Git<cr><cmd>vert resize 70<cr>" },
-      { "<leader>gs", "<cmd>Git difftool --name-status<cr>" },
     },
   },
 }

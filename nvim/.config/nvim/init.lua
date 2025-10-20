@@ -1,5 +1,6 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
+vim.g.have_nerd_font = true
 
 --[[
 ===================
@@ -7,40 +8,46 @@ vim.g.maplocalleader = " "
 ===================
 --]]
 
+-- appearance
 vim.o.number = true
 vim.o.relativenumber = true
+vim.o.winborder = "single"
+vim.o.concealcursor = "nc"
+vim.o.list = true
+vim.o.listchars = "tab:» ,trail:·,nbsp:␣"
+vim.o.guicursor = ""
+vim.o.laststatus = 3 -- all windows use the same status line
+vim.o.wrap = false
+vim.o.breakindent = true -- wrapped line appears visually indented
+vim.o.linebreak = true -- wrapped line don't break word
+vim.o.scrolloff = 3
+vim.o.cursorline = true
+vim.o.termguicolors = true
+vim.o.colorcolumn = ""
 
+-- tab
 vim.o.tabstop = 4
 vim.o.shiftwidth = 0 -- zero -> uses 'tabstop'
 vim.o.softtabstop = 0 -- zero -> off, negative -> uses 'shiftwidth'
 vim.o.expandtab = true
 
-vim.o.foldlevel = 99
-vim.o.foldlevelstart = 99
-
-vim.o.concealcursor = "nc"
-
-vim.o.list = true
-vim.o.listchars = "tab:» ,trail:·,nbsp:␣"
-
-vim.o.laststatus = 3 -- all windows use the same status line
-vim.o.showmode = false -- don't show the mode, it's in the status line
-
-vim.o.scrolloff = 6
+-- behavior
 vim.o.fixeol = false
-vim.o.guicursor = ""
-vim.o.signcolumn = "auto"
-vim.o.colorcolumn = "80"
-vim.o.cursorline = true
-vim.o.wrap = false
-vim.o.breakindent = true
-
-vim.o.winbar = " "
-vim.o.winborder = "single"
 vim.o.confirm = true -- confirm on save
 
-vim.o.splitright = true
-vim.o.splitbelow = false
+-- diagnostic
+vim.diagnostic.config({
+  severity_sort = true,
+  signs = {
+    text = not vim.g.have_nerd_font and {} or {
+      [vim.diagnostic.severity.ERROR] = "󰅚",
+      [vim.diagnostic.severity.WARN] = "󰀪",
+      [vim.diagnostic.severity.INFO] = "",
+      [vim.diagnostic.severity.HINT] = "",
+    },
+  },
+  virtual_text = true,
+})
 
 --[[
 ===================
@@ -48,24 +55,19 @@ vim.o.splitbelow = false
 ===================
 --]]
 
+vim.keymap.set("i", "<C-c>", "<Esc>")
 vim.keymap.set("n", "Q", "<Nop>", { silent = true })
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
-vim.keymap.set("i", "<C-c>", "<Esc>")
-vim.keymap.set("i", "<C-l>", "<Right>", { desc = "escape auto pair" })
+vim.keymap.set("i", "<C-l>", "<Right>", { desc = "cursor to the right" })
 
 vim.keymap.set("n", "n", "nzz", { desc = "next / and center" })
 vim.keymap.set("n", "N", "Nzz", { desc = "prev ? and center" })
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "down <C-d> and center" })
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "up <C-u> and center" })
 
-vim.keymap.set("n", "<C-n>", "<cmd>cnext<cr>", { desc = "quickfix next item" })
-vim.keymap.set("n", "<C-p>", "<cmd>cprev<cr>", { desc = "quickfix prev item" })
+vim.keymap.set("n", "<C-h>", "<C-w><C-w>", { desc = "cycle through windows" })
+vim.keymap.set("n", "<C-q>", "<C-w><C-q>", { desc = "close window" })
 
--- window nav shortcuts
-vim.keymap.set("n", "<C-h>", "<C-w><C-w>", { desc = "Cycle through windows" })
-vim.keymap.set("n", "<C-q>", "<C-w><C-q>", { desc = "Close window" })
-
--- yank/delete shortcuts
 vim.keymap.set("x", "<leader>p", '"_dP')
 vim.keymap.set({ "n", "v" }, "<leader>d", '"_d')
 vim.keymap.set({ "n", "v" }, "<leader>D", '"_D')
@@ -74,28 +76,16 @@ vim.keymap.set({ "n", "v" }, "<leader>C", '"_C')
 vim.keymap.set({ "n", "v" }, "<leader>y", '"+y')
 vim.keymap.set({ "n", "v" }, "<leader>Y", '"+Y')
 
--- shift shortcuts
-vim.keymap.set("x", ">", ">gv", { desc = "shift right nonstop" })
-vim.keymap.set("x", "<", "<gv", { desc = "shift left nonstop" })
+vim.keymap.set("x", ">", ">gv", { desc = "shift lines right nonstop" })
+vim.keymap.set("x", "<", "<gv", { desc = "shift lines left nonstop" })
 
--- execute stuff
+vim.keymap.set("n", "<C-n>", "<cmd>cnext<cr>", { desc = "quickfix next item" })
+vim.keymap.set("n", "<C-p>", "<cmd>cprev<cr>", { desc = "quickfix prev item" })
 vim.keymap.set(
   "n",
-  "<leader>xc",
-  "<CMD>!chmod +x %:p<CR>",
-  { desc = "chmod +x current file" }
-)
-vim.keymap.set(
-  "n",
-  "<leader>xx",
-  "<cmd>! %:p<cr>",
-  { desc = "execute current file" }
-)
-vim.keymap.set(
-  "v",
-  "<leader>xh",
-  "y:let @9=substitute(@0, '\\\\*\\n', ' ', 'g')<CR>:!<C-r>9",
-  { desc = "execute highlighted text" }
+  "<leader>qq",
+  vim.diagnostic.setqflist,
+  { desc = "diagnostic qflist" }
 )
 
 vim.keymap.set("n", "<leader>r", function()
@@ -116,15 +106,9 @@ end, { desc = "split tmux panes and run stuff" })
 
 --  See `:help lua-guide-autocommands`
 
--- Highlight when yanking (copying) text
---  Try it with `yap` in normal mode
---  See `:help vim.highlight.on_yank()`
 vim.api.nvim_create_autocmd("TextYankPost", {
   desc = "Highlight when yanking (copying) text",
-  group = vim.api.nvim_create_augroup(
-    "kickstart-highlight-yank",
-    { clear = true }
-  ),
+  group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
   callback = function()
     vim.hl.on_yank()
   end,
@@ -161,70 +145,6 @@ vim.api.nvim_create_autocmd("BufWritePost", {
 
 --[[
 ===================
-| diagnostic      |
-===================
---]]
-vim.diagnostic.config({
-  severity_sort = true,
-  underline = { severity = vim.diagnostic.severity.ERROR },
-  signs = {
-    text = {
-      [vim.diagnostic.severity.ERROR] = "󰅚 ",
-      [vim.diagnostic.severity.WARN] = "󰀪 ",
-      [vim.diagnostic.severity.INFO] = "󰋽 ",
-      [vim.diagnostic.severity.HINT] = "󰌶 ",
-    },
-  },
-  virtual_text = {
-    source = "if_many",
-    spacing = 2,
-    format = function(diagnostic)
-      local diagnostic_message = {
-        [vim.diagnostic.severity.ERROR] = diagnostic.message,
-        [vim.diagnostic.severity.WARN] = diagnostic.message,
-        [vim.diagnostic.severity.INFO] = diagnostic.message,
-        [vim.diagnostic.severity.HINT] = diagnostic.message,
-      }
-      return diagnostic_message[diagnostic.severity]
-    end,
-  },
-})
-
-vim.keymap.set(
-  "n",
-  "<leader>qq",
-  vim.diagnostic.setqflist,
-  { desc = "Open diagnostic [Q]uickfix list" }
-)
-
-vim.keymap.set(
-  "n",
-  "<leader>ql",
-  vim.diagnostic.setloclist,
-  { desc = "Open buffer diagnostic [L]ocation list" }
-)
-
-vim.keymap.set("n", "<leader>qv", function()
-  if vim.diagnostic.config().virtual_lines then
-    vim.diagnostic.config({ virtual_lines = false })
-    vim.notify("diagnostic virtual lines disabled")
-  else
-    vim.diagnostic.config({ virtual_lines = { current_line = true } })
-    vim.notify("diagnostic virtual lines enabled")
-  end
-end, { desc = "Toggle virtual lines" })
-
---[[
-===================
-| DEBUG           |
-===================
---]]
-function P(t)
-  vim.print(vim.inspect(t))
-end
-
---[[
-===================
 | lazy.nvim       |
 ===================
 --]]
@@ -257,16 +177,14 @@ require("lazy").setup({
     { import = "plugins" },
   },
   performance = {
-    cache = {
-      enabled = true,
-    },
-    reset_packpath = true, -- reset the package path to improve startup time
     rtp = {
-      reset = true, -- reset the runtime path to $VIMRUNTIME and your config directory
-      paths = {}, -- add any custom paths here that you want to includes in the rtp
       disabled_plugins = {
+        "gzip",
         "netrwPlugin",
+        "tarPlugin",
+        "tohtml",
         "tutor",
+        "zipPlugin",
       },
     },
   },
