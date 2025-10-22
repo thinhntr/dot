@@ -15,10 +15,11 @@ return {
     "kevinhwang91/nvim-ufo",
     event = "CursorMoved",
     dependencies = "kevinhwang91/promise-async",
-    config = function()
+    init = function()
       vim.o.foldlevel = 99
       vim.o.foldlevelstart = 99
-
+    end,
+    config = function()
       require("ufo").setup({})
 
       vim.keymap.set("n", "zR", require("ufo").openAllFolds, {
