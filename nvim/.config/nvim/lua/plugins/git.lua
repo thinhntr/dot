@@ -1,32 +1,57 @@
 return {
   {
-    "NeogitOrg/neogit",
-    opts = {
-      graph_style = "kitty",
-      commit_editor = { spell_check = false },
-    },
-    keys = {
-      { "<leader>gg", "<cmd>Neogit<cr>", desc = "Neogit" },
-    },
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "sindrets/diffview.nvim",
-      "folke/snacks.nvim",
-    },
+    "sindrets/diffview.nvim",
+    keys = { { "<leader>gd", "<cmd>DiffviewOpen<cr>" } },
   },
+
+  { -- "tpope/vim-fugitive",
+    "tpope/vim-fugitive",
+    dependencies = "lewis6991/gitsigns.nvim",
+    cmd = { "Git", "G" },
+    keys = { { "<leader>gg", "<cmd>vertical Git<cr>" } },
+  },
+
   {
     "lewis6991/gitsigns.nvim",
     event = "VeryLazy",
-    keys = {
-      { "<leader>gb", "<cmd>Gitsigns blame<cr>" },
-      { "<leader>gB", "<cmd>Gitsigns toggle_current_line_blame<cr>" },
-      { "<leader>gi", "<cmd>Gitsigns preview_hunk_inline<cr>" },
-      { "<leader>gp", "<cmd>Gitsigns preview_hunk<cr>" },
-      { "[h", "<cmd>Gitsigns prev_hunk<cr>" },
-      { "]h", "<cmd>Gitsigns next_hunk<cr>" },
-      { "<leader>gh", "<cmd>Gitsigns setqflist<cr>" },
-      { "<leader>g-", ":Gitsigns stage_hunk<cr>", mode = { "n", "v" } },
-      { "<leader>gr", ":Gitsigns reset_hunk<cr>", mode = { "n", "v" } },
+    opts = {
+      on_attach = function(buffer)
+        local gs = package.loaded.gitsigns
+
+        local function map(l, r, desc, mode)
+          vim.keymap.set(
+            mode or "n",
+            l,
+            r,
+            { buffer = buffer, desc = desc, silent = true }
+          )
+        end
+
+        map("<leader>gb", gs.blame, "git blame buffer")
+        map("<leader>gB", gs.toggle_current_line_blame, "git blame line")
+        map("<leader>gi", gs.preview_hunk_inline, "git preview hunk inline")
+        map("<leader>gp", gs.preview_hunk, "git preview hunk")
+        map("<leader>gp", gs.preview_hunk, "git preview hunk")
+        map("<leader>gq", gs.setqflist, "git to qf")
+        map("<leader>g-", gs.stage_hunk, "git toggle hunk", { "n", "x" })
+        map("<leader>gr", gs.reset_hunk, "git reset hunk", { "n", "x" })
+
+        map("]h", function()
+          if vim.wo.diff then
+            vim.cmd.normal({ "]c", bang = true })
+          else
+            gs.nav_hunk("next")
+          end
+        end, "Next Hunk")
+
+        map("[h", function()
+          if vim.wo.diff then
+            vim.cmd.normal({ "[c", bang = true })
+          else
+            gs.nav_hunk("prev")
+          end
+        end, "Prev Hunk")
+      end,
     },
   },
 }

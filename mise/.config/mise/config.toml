@@ -1,17 +1,16 @@
 [tools]
 fzf = "latest"
 go = "1.25"
-neovim = "nightly"
 starship = "latest"
 stylua = "latest"
 tmux = "latest"
 node = "latest"
 ripgrep = "latest"
-python = "latest"
 bat = "latest"
 ffmpeg = "latest"
 fd = "latest"
 uv = "latest"
+bob = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = []

@@ -1,59 +1,64 @@
-local ts_ensure_installed = {
-  "bash",
-  "c",
-  "cpp",
-  "css",
-  "go",
-  "javascript",
-  "json",
-  "lua",
-  "markdown",
-  "markdown_inline",
-  "python",
-  "regex",
-  "typescript",
-  "vimdoc",
-  "yaml",
-}
-
 return {
-  "nvim-treesitter/nvim-treesitter",
-  version = false,
-  build = ":TSUpdate",
-  cmd = { "TSInstall", "TSUpdate", "TSUpdateSync" },
-  lazy = false,
-  init = function(plugin)
-    require("lazy.core.loader").add_to_rtp(plugin)
-    require("nvim-treesitter.query_predicates")
-  end,
-  config = function()
-    ---@diagnostic disable-next-line: missing-fields
-    require("nvim-treesitter.configs").setup({
-      highlight = { enable = true },
-      indent = { enable = true },
-      ensure_installed = ts_ensure_installed,
-      textobjects = {
-        select = {
-          enable = true,
-          lookahead = true,
-          keymaps = {
-            ["af"] = "@function.outer",
-            ["if"] = "@function.inner",
-          },
-        },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    branch = "main",
+    version = false,
+    build = ":TSUpdate",
+    lazy = false,
+    config = function()
+      require("nvim-treesitter").install({ "go" })
+      vim.api.nvim_create_autocmd("FileType", {
+        -- enable highlight
+        group = vim.api.nvim_create_augroup("tsconfig", { clear = true }),
+        pattern = { "go", "lua" },
+        callback = function()
+          vim.treesitter.start() -- enable highlight
+          vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
+        end,
+      })
+    end,
+  },
+
+  { -- "nvim-treesitter/nvim-treesitter-context",
+    "nvim-treesitter/nvim-treesitter-context",
+    event = "VeryLazy",
+    branch = "master",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    opts = {
+      trim_scope = "outer",
+      mode = "topline",
+      max_lines = 5,
+      min_window_height = 20,
+    },
+  },
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    dependencies = "nvim-treesitter/nvim-treesitter",
+    branch = "main",
+    opts = {},
+    keys = {
+      {
+        "af",
+        function()
+          require("nvim-treesitter-textobjects.select").select_textobject(
+            "@function.outer",
+            "textobjects"
+          )
+        end,
+        mode = { "x", "o" },
+        desc = "select outer function",
       },
-    })
-  end,
-  dependencies = {
-    { -- "nvim-treesitter/nvim-treesitter-context",
-      "nvim-treesitter/nvim-treesitter-context",
-      opts = {
-        trim_scope = "outer",
-        mode = "topline",
-        max_lines = 3,
-        min_window_height = 20,
+      {
+        "if",
+        function()
+          require("nvim-treesitter-textobjects.select").select_textobject(
+            "@function.inner",
+            "textobjects"
+          )
+        end,
+        mode = { "x", "o" },
+        desc = "select inner function",
       },
     },
-    { "nvim-treesitter/nvim-treesitter-textobjects" },
   },
 }

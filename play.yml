@@ -45,3 +45,11 @@
 
     - name: utils dir - stow symlink
       command: stow -R utils -t $HOME/utils
+
+    - name: neovim - install
+      shell: |
+        if command -v bob ; then
+          bob use nightly
+        else
+          echo Cannot install neovim. bob not found
+        fi

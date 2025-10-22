@@ -8,9 +8,7 @@ return {
     config = function()
       require("mason-lspconfig").setup({
         automatic_enable = {
-          exclude = {
-            "ruff",
-          },
+          exclude = { "ruff", "stylua" },
         },
         ensure_installed = {},
         automatic_installation = false,

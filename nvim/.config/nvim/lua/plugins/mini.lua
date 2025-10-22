@@ -37,7 +37,7 @@ return {
       })
 
       require("mini.files").setup({
-        mappings = { go_in_plus = "<cr>", synchronize = "<C-s>" },
+        mappings = { go_in_plus = "<cr>", synchronize = ":w" },
       })
       vim.keymap.set("n", "<leader>e", function()
         require("mini.files").open(vim.api.nvim_buf_get_name(0))

@@ -17,13 +17,14 @@ vim.o.list = true
 vim.o.listchars = "tab:» ,trail:·,nbsp:␣"
 vim.o.guicursor = ""
 vim.o.laststatus = 3 -- all windows use the same status line
-vim.o.wrap = false
+vim.o.wrap = true
 vim.o.breakindent = true -- wrapped line appears visually indented
 vim.o.linebreak = true -- wrapped line don't break word
 vim.o.scrolloff = 3
 vim.o.cursorline = true
 vim.o.termguicolors = true
 vim.o.colorcolumn = ""
+vim.o.splitright = true
 
 -- tab
 vim.o.tabstop = 4
