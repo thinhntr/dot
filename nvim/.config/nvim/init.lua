@@ -33,6 +33,7 @@ vim.o.softtabstop = 0 -- zero -> off, negative -> uses 'shiftwidth'
 vim.o.expandtab = true
 
 -- behavior
+vim.o.timeoutlen = 200
 vim.o.fixeol = false
 vim.o.confirm = true -- confirm on save
 
@@ -59,6 +60,7 @@ vim.diagnostic.config({
 vim.keymap.set("i", "<C-c>", "<Esc>")
 vim.keymap.set("n", "Q", "<Nop>", { silent = true })
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
+vim.keymap.set("t", "<Esc><Esc>", "<C-\\><C-n>")
 vim.keymap.set("i", "<C-l>", "<Right>", { desc = "cursor to the right" })
 
 vim.keymap.set("n", "n", "nzz", { desc = "next / and center" })
@@ -98,6 +100,25 @@ vim.keymap.set("n", "<leader>r", function()
   vim.system({ "tmux", "send-keys", "-t", ":.1", cmd, "Enter" })
   vim.notify("trunner: ok")
 end, { desc = "split tmux panes and run stuff" })
+
+--[[
+===================
+| Troubleshoot    |
+===================
+--]]
+function Log(t)
+  local log_path = vim.env.HOME .. "/.nvim.log"
+  local file, err = io.open(log_path, "a+")
+  if file == nil then
+    vim.api.nvim_echo({ { "Log() failed: " .. err, "ErrorMsg" } }, true, {})
+    return
+  end
+
+  local timestamp = tostring(os.date("%Y-%m-%dT%H:%M:%S%Z"))
+  local msg = t and vim.inspect(t) or ""
+  file:write(timestamp .. " " .. msg .. "\n")
+  file:close()
+end
 
 --[[
 ===================

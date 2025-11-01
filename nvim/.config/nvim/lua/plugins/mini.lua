@@ -17,7 +17,15 @@ return {
       require("mini.icons").setup({})
       require("mini.icons").mock_nvim_web_devicons()
 
-      require("mini.ai").setup({ n_lines = 10000 })
+      require("mini.ai").setup({
+        n_lines = 10000,
+        custom_textobjects = {
+          f = require("mini.ai").gen_spec.treesitter({
+            a = "@function.outer",
+            i = "@function.inner",
+          }),
+        },
+      })
 
       require("mini.align").setup({})
 

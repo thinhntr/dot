@@ -8,10 +8,15 @@ return { -- "folke/snacks.nvim"
     },
     statuscolumn = {},
     notifier = { timeout = 10000 },
-    indent = { enabled = true, animate = { enabled = false } },
+    indent = {
+      indent = { char = "╎" },
+      scope = { char = "╎" },
+      animate = { enabled = false },
+    },
     picker = {
       layout = { preset = "ivy", preview = false },
       matcher = { frecency = true },
+
       formatters = { file = { truncate = 120 } },
     },
     scope = {

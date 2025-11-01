@@ -3,7 +3,7 @@ return { -- conform - autoformat
   cmd = { "ConformInfo" },
   keys = {
     {
-      "<leader>cf",
+      "<leader>bf",
       function()
         require("conform").format({ async = false, lsp_format = "fallback" })
       end,

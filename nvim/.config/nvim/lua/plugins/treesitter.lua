@@ -31,34 +31,11 @@ return {
       min_window_height = 20,
     },
   },
+
   {
     "nvim-treesitter/nvim-treesitter-textobjects",
     dependencies = "nvim-treesitter/nvim-treesitter",
     branch = "main",
     opts = {},
-    keys = {
-      {
-        "af",
-        function()
-          require("nvim-treesitter-textobjects.select").select_textobject(
-            "@function.outer",
-            "textobjects"
-          )
-        end,
-        mode = { "x", "o" },
-        desc = "select outer function",
-      },
-      {
-        "if",
-        function()
-          require("nvim-treesitter-textobjects.select").select_textobject(
-            "@function.inner",
-            "textobjects"
-          )
-        end,
-        mode = { "x", "o" },
-        desc = "select inner function",
-      },
-    },
   },
 }
