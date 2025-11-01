@@ -106,8 +106,9 @@ end, { desc = "split tmux panes and run stuff" })
 | Troubleshoot    |
 ===================
 --]]
+local log_path = vim.env.HOME .. "/.nvim.log"
+
 function Log(t)
-  local log_path = vim.env.HOME .. "/.nvim.log"
   local file, err = io.open(log_path, "a+")
   if file == nil then
     vim.api.nvim_echo({ { "Log() failed: " .. err, "ErrorMsg" } }, true, {})
@@ -119,6 +120,10 @@ function Log(t)
   file:write(timestamp .. " " .. msg .. "\n")
   file:close()
 end
+
+vim.keymap.set("n", "<leader>fl", function()
+  vim.cmd.edit(log_path)
+end, { desc = "view nvim log file" })
 
 --[[
 ===================
