@@ -1,0 +1,16 @@
+theme = Doom One
+
+font-size = 17
+# font-style-bold = false
+# font-style-italic = false
+# font-style-bold-italic = false
+# font-feature = -calt
+# font-feature = -liga
+# font-feature = -dlig
+
+cursor-style = block
+
+shell-integration-features = no-cursor
+
+macos-icon = glass
+macos-option-as-alt = true

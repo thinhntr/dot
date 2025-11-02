@@ -37,6 +37,7 @@
         stow -R nvim -t $HOME
         stow -R wezterm -t $HOME
         stow -R bat -t $HOME
+        stow -R ghostty -t $HOME
 
     - name: utils dir
       file:
