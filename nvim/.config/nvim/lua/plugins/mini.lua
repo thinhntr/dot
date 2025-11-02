@@ -1,19 +1,22 @@
 return {
   {
+    "thinhntr/mini.hues",
+    version = false,
+    lazy = false,
+    priority = 6000,
+    opts = {
+      -- winter
+      background = "#1c2231",
+      foreground = "#c4c7cd",
+      n_hues = 7,
+    },
+  },
+  {
     "nvim-mini/mini.nvim",
     version = false,
     lazy = false,
     priority = 5000,
     config = function()
-      local palette = require("mini.hues").make_palette({
-        -- winter
-        background = "#1c2231",
-        foreground = "#c4c7cd",
-        n_hues = 7,
-      })
-      require("mini.hues").apply_palette(palette)
-      vim.api.nvim_set_hl(0, "NonText", { fg = palette.fg_mid2 })
-
       require("mini.icons").setup({})
       require("mini.icons").mock_nvim_web_devicons()
 
