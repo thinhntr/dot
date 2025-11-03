@@ -9,7 +9,7 @@ return {
         require("sidekick.cli").toggle({ name = "gemini" })
       end,
       desc = "Sidekick Toggle",
-      mode = { "n", "t", "x" },
+      mode = { "n", "x" },
     },
   },
 }
