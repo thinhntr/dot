@@ -16,6 +16,9 @@ return { -- "saghen/blink.cmp",
       ["<C-s>"] = { "show_signature", "hide_signature" },
     },
     sources = {
+      per_filetype = {
+        lua = { inherit_defaults = true, "lazydev" },
+      },
       providers = {
         lazydev = {
           module = "lazydev.integrations.blink",
