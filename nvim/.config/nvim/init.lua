@@ -79,6 +79,9 @@ vim.keymap.set({ "n", "v" }, "<leader>C", '"_C')
 vim.keymap.set({ "n", "v" }, "<leader>y", '"+y')
 vim.keymap.set({ "n", "v" }, "<leader>Y", '"+Y')
 
+vim.keymap.set("n", "[e", "<cmd>move--<cr>", { desc = "move current line up" })
+vim.keymap.set("n", "]e", "<cmd>move+<cr>", { desc = "move current line up" })
+
 vim.keymap.set("x", ">", ">gv", { desc = "shift lines right nonstop" })
 vim.keymap.set("x", "<", "<gv", { desc = "shift lines left nonstop" })
 
