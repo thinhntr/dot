@@ -139,11 +139,26 @@ end, { desc = "view nvim log file" })
 ===================
 --]]
 
---  See `:help lua-guide-autocommands`
+local common_ag = vim.api.nvim_create_augroup("common_ag", { clear = true })
+
+vim.api.nvim_create_autocmd("FileType", {
+  desc = "vertical help",
+  group = common_ag,
+  pattern = "help",
+  command = "wincmd L",
+})
+
+vim.api.nvim_create_autocmd("BufReadPost", {
+  desc = "jump to the cursor position when last exiting the curent buffer",
+  group = common_ag,
+  callback = function()
+    vim.cmd.normal("'\"")
+  end,
+})
 
 vim.api.nvim_create_autocmd("TextYankPost", {
   desc = "Highlight when yanking (copying) text",
-  group = vim.api.nvim_create_augroup("highlight-yank", { clear = true }),
+  group = common_ag,
   callback = function()
     vim.hl.on_yank()
   end,
@@ -151,7 +166,7 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 vim.api.nvim_create_autocmd("BufWritePost", {
   desc = "Create BarBuf",
-  group = vim.api.nvim_create_augroup("BarBufGroup", { clear = true }),
+  group = common_ag,
   pattern = { "*.bar" },
   callback = function()
     local barBufnr = vim.fn.bufnr("BarBuf")
@@ -175,6 +190,23 @@ vim.api.nvim_create_autocmd("BufWritePost", {
         vim.api.nvim_buf_set_lines(barBufnr, -1, -1, false, data)
       end,
     })
+  end,
+})
+
+-- cursorline
+vim.api.nvim_create_autocmd("WinEnter", {
+  desc = "enable cursorline for active win",
+  group = vim.api.nvim_create_augroup("cul_ag", { clear = true }),
+  callback = function()
+    vim.o.cursorline = true
+  end,
+})
+
+vim.api.nvim_create_autocmd("WinLeave", {
+  desc = "disable cursorline for inactive win",
+  group = "cul_ag",
+  callback = function()
+    vim.o.cursorline = false
   end,
 })
 
