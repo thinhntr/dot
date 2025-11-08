@@ -17,7 +17,7 @@ vim.o.list = true
 vim.o.listchars = "tab:» ,trail:·,nbsp:␣"
 vim.o.guicursor = ""
 vim.o.laststatus = 3 -- all windows use the same status line
-vim.o.wrap = true
+vim.o.wrap = false
 vim.o.breakindent = true -- wrapped line appears visually indented
 vim.o.linebreak = true -- wrapped line don't break word
 vim.o.scrolloff = 3
@@ -33,6 +33,7 @@ vim.o.softtabstop = 0 -- zero -> off, negative -> uses 'shiftwidth'
 vim.o.expandtab = true
 
 -- behavior
+vim.o.smartcase = true
 vim.o.timeoutlen = 200
 vim.o.fixeol = false
 vim.o.confirm = true -- confirm on save
@@ -145,7 +146,11 @@ vim.api.nvim_create_autocmd("FileType", {
   desc = "vertical help",
   group = common_ag,
   pattern = "help",
-  command = "wincmd L",
+  callback = function()
+    if vim.api.nvim_win_get_width(0) > 125 then
+      vim.cmd.wincmd("L")
+    end
+  end,
 })
 
 vim.api.nvim_create_autocmd("BufReadPost", {
