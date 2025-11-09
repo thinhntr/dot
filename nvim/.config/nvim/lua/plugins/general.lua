@@ -3,6 +3,14 @@ return {
 
   { "norcalli/nvim-terminal.lua", opts = {}, ft = "terminal" },
 
+  {
+    "ggandor/leap.nvim",
+    lazy = false,
+    keys = {
+      { "s", "<Plug>(leap)", mode = { "n", "x", "o" }, desc = "leap" },
+    },
+  },
+
   { -- "hedyhli/outline.nvim",
     "hedyhli/outline.nvim",
     lazy = true,
