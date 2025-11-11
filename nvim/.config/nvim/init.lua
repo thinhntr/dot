@@ -211,6 +211,9 @@ vim.api.nvim_create_autocmd("WinLeave", {
   desc = "disable cursorline for inactive win",
   group = "cul_ag",
   callback = function()
+    if vim.bo.filetype == "qf" then
+      return
+    end
     vim.o.cursorline = false
   end,
 })

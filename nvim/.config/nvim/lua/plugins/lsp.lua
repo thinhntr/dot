@@ -13,14 +13,6 @@ return {
         ensure_installed = {},
         automatic_installation = false,
       })
-
-      vim.lsp.config("basedpyright", {
-        settings = {
-          basedpyright = {
-            typeCheckingMode = "basic",
-          },
-        },
-      })
     end,
   },
 
