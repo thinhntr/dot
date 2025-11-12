@@ -79,7 +79,7 @@ return {
             {
               "lsp_status",
               fmt = function(s)
-                return vim.o.columns < 140 and "" or s
+                return vim.o.columns < 80 and "" or s
               end,
             },
           },
