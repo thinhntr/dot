@@ -157,7 +157,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
   desc = "jump to the cursor position when last exiting the curent buffer",
   group = common_ag,
   callback = function()
-    vim.cmd.normal("'\"")
+    pcall(vim.cmd.normal, "'\"")
   end,
 })
 
