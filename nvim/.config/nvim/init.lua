@@ -94,9 +94,11 @@ vim.keymap.set("x", "<", "<gv", { desc = "shift lines left nonstop" })
 
 vim.keymap.set("n", "<C-n>", "<cmd>cnext<cr>", { desc = "quickfix next item" })
 vim.keymap.set("n", "<C-p>", "<cmd>cprev<cr>", { desc = "quickfix prev item" })
+
+vim.keymap.set("n", "<leader>q", vim.diagnostic.open_float)
 vim.keymap.set(
   "n",
-  "<leader>qq",
+  "<leader>oq",
   vim.diagnostic.setqflist,
   { desc = "diagnostic qflist" }
 )
