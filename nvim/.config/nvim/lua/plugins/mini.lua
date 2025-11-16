@@ -1,17 +1,5 @@
 return {
   {
-    "thinhntr/mini.hues",
-    version = false,
-    lazy = false,
-    priority = 6000,
-    opts = {
-      -- winter
-      background = "#1c2231",
-      foreground = "#c4c7cd",
-      n_hues = 7,
-    },
-  },
-  {
     "nvim-mini/mini.nvim",
     version = false,
     lazy = false,

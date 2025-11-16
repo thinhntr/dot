@@ -4,6 +4,31 @@ return {
   { "norcalli/nvim-terminal.lua", opts = {}, ft = "terminal" },
 
   {
+    "thinhntr/mini.hues",
+    cond = false,
+    version = false,
+    lazy = false,
+    priority = 6000,
+    opts = {
+      -- winter
+      background = "#1c2231",
+      foreground = "#c4c7cd",
+      n_hues = 7,
+    },
+  },
+
+  {
+    "folke/tokyonight.nvim",
+    cond = true,
+    priority = 7000,
+    lazy = false,
+    config = function()
+      require("tokyonight").setup({})
+      vim.cmd.colorscheme("tokyonight")
+    end,
+  },
+
+  {
     "ggandor/leap.nvim",
     lazy = false,
     keys = {
