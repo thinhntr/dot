@@ -33,6 +33,7 @@ vim.o.softtabstop = 0 -- zero -> off, negative -> uses 'shiftwidth'
 vim.o.expandtab = true
 
 -- behavior
+vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.o.timeoutlen = 200
 vim.o.fixeol = false
