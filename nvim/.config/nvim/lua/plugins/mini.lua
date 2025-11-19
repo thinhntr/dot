@@ -36,7 +36,7 @@ return {
       })
 
       require("mini.files").setup({
-        mappings = { go_in_plus = "l", synchronize = ":w" },
+        mappings = { go_in_plus = "l", synchronize = "`" },
       })
       vim.keymap.set("n", "<leader>e", function()
         local path
