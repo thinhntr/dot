@@ -29,6 +29,21 @@ return {
   },
 
   {
+    "rachartier/tiny-inline-diagnostic.nvim",
+    event = "VeryLazy",
+    priority = 1000,
+    opts = {
+      preset = "ghost",
+      options = {
+        multilines = {
+          enabled = true,
+          always_show = true,
+        },
+      },
+    },
+  },
+
+  {
     "rachartier/tiny-glimmer.nvim",
     event = "VeryLazy",
     priority = 10,

@@ -50,7 +50,7 @@ vim.diagnostic.config({
       [vim.diagnostic.severity.HINT] = "",
     },
   },
-  virtual_text = true,
+  virtual_text = false,
 })
 
 --[[
