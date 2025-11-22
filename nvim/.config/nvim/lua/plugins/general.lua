@@ -37,6 +37,7 @@ return {
         undo = { enabled = true },
         redo = { enabled = true },
       },
+      animations = { fade = { from_color = "CurSearch" } },
     },
   },
 
