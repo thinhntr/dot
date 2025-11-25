@@ -1,7 +1,11 @@
-theme = Doom One
 font-size = 17
-cursor-style = block
-custom-shader = ~/.config/ghostty/shaders/cursor_blaze.glsl
-custom-shader-animation = false
+font-style-bold = false
+font-style-italic = false
+font-style-bold-italic = false
+
+theme = Doom One
 macos-icon = glass
 window-colorspace = display-p3
+shell-integration-features = no-cursor
+
+custom-shader = ~/.config/ghostty/shaders/cursor_warp.glsl

@@ -35,7 +35,7 @@ vim.o.expandtab = true
 -- behavior
 vim.o.ignorecase = true
 vim.o.smartcase = true
-vim.o.timeoutlen = 200
+vim.o.timeoutlen = 600
 vim.o.fixeol = false
 vim.o.confirm = true -- confirm on save
 
@@ -267,3 +267,7 @@ require("lazy").setup({
     },
   },
 })
+
+if vim.g.neovide then
+  vim.o.guifont = "JetBrainsMonoNL Nerd Font Mono:h16"
+end
