@@ -38,6 +38,7 @@
         stow -R wezterm -t $HOME
         stow -R bat -t $HOME
         stow -R ghostty -t $HOME
+        stow -R aerospace -t $HOME
 
     - name: utils dir
       file:
