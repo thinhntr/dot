@@ -1,16 +1,6 @@
 #!/usr/bin/env bash
 
-candy+=($(find ~ -maxdepth 1 -mindepth 1 -type d))
-candy+=($(find ~/projects -maxdepth 1 -mindepth 1 -type d))
-candy+=($(find ~/tmp -maxdepth 1 -mindepth 1 -type d))
-candy+=($(find ~/.local/share/nvim/lazy -maxdepth 1 -mindepth 1 -type d))
-candy+=($(find $(cat ~/utils/ts_dirs) -maxdepth 1 -mindepth 1 -type d))
-
-if [[ $# -eq 1 ]]; then
-    selected=$1
-else
-    selected=$(printf '%s\n' "${candy[@]}" | fzf)
-fi
+selected=$(tt)
 
 if [[ -z $selected ]]; then
     exit 0
