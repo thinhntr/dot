@@ -7,5 +7,3 @@ theme = Doom One
 macos-icon = glass
 window-colorspace = display-p3
 shell-integration-features = no-cursor
-
-custom-shader = ~/.config/ghostty/shaders/cursor_warp.glsl
