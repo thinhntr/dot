@@ -1,0 +1,4 @@
+#!/usr/bin/env zsh
+
+osascript -e "display notification \"$2\" with title \"$1\""
+afplay /System/Library/Sounds/Tink.aiff
