@@ -98,7 +98,7 @@ vim.keymap.set("n", "<C-p>", "<cmd>cprev<cr>", { desc = "quickfix prev item" })
 vim.keymap.set("n", "<leader>q", vim.diagnostic.open_float)
 vim.keymap.set(
   "n",
-  "<leader>oq",
+  "<leader>bq",
   vim.diagnostic.setqflist,
   { desc = "diagnostic qflist" }
 )
