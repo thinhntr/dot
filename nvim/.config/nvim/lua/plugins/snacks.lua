@@ -39,7 +39,7 @@ return { -- "folke/snacks.nvim"
     { "<leader>fd", function() Snacks.picker.diagnostics() end, desc = "find diagnostics", },
     { "<leader>fg", function() Snacks.picker.grep({ hidden = true }) end, desc = "grep", },
     { "<leader>ff", function() Snacks.picker.git_files() end, desc = "find git files", },
-    { "<leader>fw", function() Snacks.picker.grep_word({ hidden = true }) end, desc = "grep word or visual selection?", mode = { "n", "x" }, },
+    { "<leader>fw", function() Snacks.picker.grep({ dirs = { vim.api.nvim_buf_get_name(0) } }) end, desc = "grep in current buf" },
     { "<leader><leader>", function() Snacks.picker.files({ hidden = true }) end, desc = "find all files", },
     { "<leader>fn", function() Snacks.picker.files({
           hidden = true,
