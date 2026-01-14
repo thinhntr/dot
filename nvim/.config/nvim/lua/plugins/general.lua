@@ -1,7 +1,25 @@
 return {
   { "NMAC427/guess-indent.nvim", opts = {} },
 
-  { "norcalli/nvim-terminal.lua", opts = {}, ft = "terminal" },
+  {
+    "norcalli/nvim-terminal.lua",
+    ft = "terminal",
+    config = function()
+      require("terminal").setup({})
+
+      vim.api.nvim_create_autocmd("FileType", {
+        desc = "nvim-terminal concealcursor",
+        group = vim.api.nvim_create_augroup(
+          "nvim-terminal_ag",
+          { clear = true }
+        ),
+        pattern = "terminal",
+        callback = function()
+          vim.o.cocu = vim.o.cocu .. "v"
+        end,
+      })
+    end,
+  },
 
   {
     "thinhntr/mini.hues",
