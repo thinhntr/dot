@@ -1,6 +1,8 @@
 return {
   { "NMAC427/guess-indent.nvim", opts = {} },
 
+  { "stevearc/quicker.nvim", opts = {}, ft = "qf" },
+
   {
     "norcalli/nvim-terminal.lua",
     ft = "terminal",
