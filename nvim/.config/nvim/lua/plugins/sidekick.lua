@@ -2,16 +2,16 @@ return {
   "folke/sidekick.nvim",
   opts = {
     cli = {
-      tools = {
-        amp = {
-          cmd = { "amp", "--ide" },
-        },
+      mux = {
+        backend = "tmux",
+        enabled = true,
+        create = "split",
       },
     },
   },
   cmd = { "Sidekick" },
   keys = function()
-    local default = "amp"
+    local default = "opencode"
     return {
       {
         "<leader>bn",
