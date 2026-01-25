@@ -106,6 +106,10 @@ vim.keymap.set(
 )
 
 vim.keymap.set("n", "<leader>r", function()
+  if vim.env.TMUX == nil or vim.env.TMUX == "" then
+    vim.notify("run: failed. Not in tmux")
+    return
+  end
   local count = vim.fn.system("tmux list-panes | wc -l")
   if tonumber(count) < 2 then
     if vim.api.nvim_win_get_width(0) > 125 then
@@ -116,7 +120,7 @@ vim.keymap.set("n", "<leader>r", function()
   end
   local cmd = "make"
   vim.system({ "tmux", "send-keys", "-t", ":.2", cmd, "Enter" })
-  vim.notify("trunner: ok")
+  vim.notify("run: ok. " .. cmd)
 end, { desc = "split tmux panes and run stuff" })
 
 --[[
