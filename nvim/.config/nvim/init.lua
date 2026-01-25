@@ -92,8 +92,10 @@ end, { desc = "move current line down" })
 vim.keymap.set("x", ">", ">gv", { desc = "shift lines right nonstop" })
 vim.keymap.set("x", "<", "<gv", { desc = "shift lines left nonstop" })
 
+-- stylua: ignore start
 vim.keymap.set("n", "<C-n>", "<cmd>cnext<cr>zz", { desc = "quickfix next item" })
 vim.keymap.set("n", "<C-p>", "<cmd>cprev<cr>zz", { desc = "quickfix prev item" })
+-- stylua: ignore end
 
 vim.keymap.set("n", "<leader>q", vim.diagnostic.open_float)
 vim.keymap.set(
@@ -106,10 +108,14 @@ vim.keymap.set(
 vim.keymap.set("n", "<leader>r", function()
   local count = vim.fn.system("tmux list-panes | wc -l")
   if tonumber(count) < 2 then
-    vim.fn.system("tmux splitw -h -b -l 60")
+    if vim.api.nvim_win_get_width(0) > 125 then
+      vim.fn.system("tmux splitw -h -l 60")
+    else
+      vim.fn.system("tmux splitw -v -l 15")
+    end
   end
   local cmd = "make"
-  vim.system({ "tmux", "send-keys", "-t", ":.1", cmd, "Enter" })
+  vim.system({ "tmux", "send-keys", "-t", ":.2", cmd, "Enter" })
   vim.notify("trunner: ok")
 end, { desc = "split tmux panes and run stuff" })
 

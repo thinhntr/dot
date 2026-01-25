@@ -106,7 +106,7 @@ return {
           lualine_z = {
             { -- location
               function()
-                return vim.o.columns < 110 and "%l:%v" or "%4l|%L:%2v"
+                return vim.o.columns < 110 and "%l|%v" or "%4l:%L|%2v"
               end,
             },
           },

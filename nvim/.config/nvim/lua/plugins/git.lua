@@ -8,7 +8,17 @@ return {
     "tpope/vim-fugitive",
     dependencies = "lewis6991/gitsigns.nvim",
     cmd = { "Git", "G" },
-    keys = { { "<leader>gg", "<cmd>vertical Git<cr>" } },
+    keys = {
+      {
+        "<leader>gg",
+        function()
+          vim.cmd("Git")
+          if vim.api.nvim_win_get_width(0) > 125 then
+            vim.cmd.wincmd("L")
+          end
+        end,
+      },
+    },
   },
 
   {
