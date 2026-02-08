@@ -174,13 +174,13 @@ vim.api.nvim_create_autocmd("BufReadPost", {
   end,
 })
 
--- vim.api.nvim_create_autocmd("TextYankPost", {
---   desc = "Highlight when yanking (copying) text",
---   group = common_ag,
---   callback = function()
---     vim.hl.on_yank()
---   end,
--- })
+vim.api.nvim_create_autocmd("TextYankPost", {
+  desc = "Highlight when yanking (copying) text",
+  group = common_ag,
+  callback = function()
+    vim.hl.on_yank()
+  end,
+})
 
 vim.api.nvim_create_autocmd("BufWritePost", {
   desc = "Create BarBuf",

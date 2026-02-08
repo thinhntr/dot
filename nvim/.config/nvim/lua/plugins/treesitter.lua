@@ -10,7 +10,7 @@ return {
       vim.api.nvim_create_autocmd("FileType", {
         -- enable highlight
         group = vim.api.nvim_create_augroup("tsconfig", { clear = true }),
-        pattern = { "go", "lua" },
+        pattern = { "go", "lua", "py" },
         callback = function()
           vim.treesitter.start() -- enable highlight
           vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"

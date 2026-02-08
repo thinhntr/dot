@@ -15,7 +15,19 @@ return {
       })
 
       vim.lsp.config("rust_analyzer", {})
-      vim.lsp.enable("rust_analyzer")
+
+      vim.lsp.config("basedpyright", {
+        settings = {
+          basedpyright = {
+            analysis = {
+              typeCheckingMode = "standard",
+              diagnosticMode = "workspace",
+            },
+          },
+        },
+      })
+
+      vim.lsp.enable({ "rust_analyzer", "basedpyright" })
     end,
   },
 

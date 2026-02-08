@@ -49,20 +49,8 @@ return {
   },
 
   {
-    "rachartier/tiny-glimmer.nvim",
-    event = "VeryLazy",
-    priority = 10,
-    opts = {
-      overwrite = {
-        undo = { enabled = true },
-        redo = { enabled = true },
-      },
-      animations = { fade = { from_color = "CurSearch" } },
-    },
-  },
-
-  {
     "ggandor/leap.nvim",
+    url = "https://codeberg.org/andyg/leap.nvim",
     lazy = false,
     keys = {
       { "s", "<Plug>(leap)", mode = { "n", "x", "o" }, desc = "leap" },
