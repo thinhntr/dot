@@ -36,20 +36,15 @@ return {
       })
 
       require("mini.files").setup({
-        mappings = { go_in_plus = "l", synchronize = "`" },
+        mappings = { go_in_plus = "l", synchronize = "S" },
       })
       vim.keymap.set("n", "<leader>e", function()
         local path
         path = vim.api.nvim_buf_get_name(0)
 
-        -- try getting parent directory
-        if vim.fn.isdirectory(path) == 0 then
-          path = vim.fn.fnamemodify(path, ":h")
-        end
-
         -- set to nil if that directory doesn't exist, e.g. fugitive://...
         if not vim.uv.fs_stat(path) then
-          path = nil
+          path = require("mini.files").get_latest_path()
         end
 
         if not MiniFiles.close() then

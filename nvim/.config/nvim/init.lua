@@ -35,7 +35,7 @@ vim.o.expandtab = true
 -- behavior
 vim.o.ignorecase = true
 vim.o.smartcase = true
-vim.o.timeoutlen = 600
+-- vim.o.timeoutlen = 600
 vim.o.fixeol = false
 vim.o.confirm = true -- confirm on save
 
@@ -162,6 +162,7 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function()
     if vim.api.nvim_win_get_width(0) > 125 then
       vim.cmd.wincmd("L")
+      vim.cmd("vert res 80")
     end
   end,
 })
