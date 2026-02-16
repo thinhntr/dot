@@ -10,6 +10,7 @@ bat = "latest"
 ffmpeg = "latest"
 fd = "latest"
 bob = "latest"
+uv = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = []
