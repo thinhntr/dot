@@ -39,8 +39,7 @@ return {
         mappings = { go_in_plus = "l", synchronize = "S" },
       })
       vim.keymap.set("n", "<leader>e", function()
-        local path
-        path = vim.api.nvim_buf_get_name(0)
+        local path = vim.api.nvim_buf_get_name(0)
 
         -- set to nil if that directory doesn't exist, e.g. fugitive://...
         if not vim.uv.fs_stat(path) then
