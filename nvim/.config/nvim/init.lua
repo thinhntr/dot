@@ -35,7 +35,6 @@ vim.o.expandtab = true
 -- behavior
 vim.o.ignorecase = true
 vim.o.smartcase = true
--- vim.o.timeoutlen = 600
 vim.o.fixeol = false
 vim.o.confirm = true -- confirm on save
 
