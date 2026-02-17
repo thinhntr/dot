@@ -21,7 +21,6 @@ bindkey "^[[3~" delete-char # hack: fix tmux removes delete-char keybind
 # auto completion
 autoload -U compinit; compinit
 _comp_options+=(globdots) # With hidden files
-zstyle ':completion:*' menu select
 # Allow to select in a menu
 zstyle ':completion:*' menu select
 # Define completers
