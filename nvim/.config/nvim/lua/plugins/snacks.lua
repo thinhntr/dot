@@ -101,7 +101,7 @@ return { -- "folke/snacks.nvim"
   init = function()
     vim.api.nvim_create_autocmd("FileType", {
       group = vim.api.nvim_create_augroup("snacks_ag", { clear = true }),
-      pattern = "help",
+      pattern = { "help", "qf" },
       command = "setlocal stc=",
     })
   end,
