@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+candy+=(~/.local/share/nvim)
 candy+=($(find ~ -maxdepth 1 -mindepth 1 -type d))
 candy+=($(find ~/projects -maxdepth 1 -mindepth 1 -type d))
 candy+=($(find ~/tmp -maxdepth 1 -mindepth 1 -type d))
