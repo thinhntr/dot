@@ -36,7 +36,7 @@ Z.now(function()
 
   Z.map('n', '<leader>fa', '<Cmd>lua Snacks.picker()<CR>')
   Z.map('n', '<leader>fh', '<Cmd>lua Snacks.picker.help()<CR>')
-  Z.map('n', '<leader>fk', '<Cmd>lua Snacks.picker.key.maps()<CR>')
+  Z.map('n', '<leader>fk', '<Cmd>lua Snacks.picker.keymaps()<CR>')
   Z.map('n', '<leader>fb', '<Cmd>lua Snacks.picker.buffers()<CR>')
   Z.map('n', '<leader>fr', '<Cmd>lua Snacks.picker.resume()<CR>')
   Z.map('n', '<leader>ft', '<Cmd>lua Snacks.notifier.show_history()<CR>')
@@ -58,31 +58,29 @@ Z.now(function()
   )
 
   Z.map('n', '<leader>fp', function()
-    Snacks.picker.projects({
-      win = {
-        input = {
-          keys = {
-            ['<c-w>'] = { { '<c-s-w>' }, mode = { 'i' }, expr = true },
-          },
-        },
-      },
-      dev = {
-        '~/.local/share/nvim/lazy',
-        '~/projects',
-        '~/tmp',
-        vim.fn.stdpath('data'),
-      },
-      ---@param picker snacks.Picker
-      ---@param item snacks.picker.Item
-      confirm = function(picker, item)
-        picker:close()
-        local dir = item and item.file or nil
-        if dir then
-          vim.schedule(
-            function() Snacks.picker.files({ hidden = true, dirs = { item.file } }) end
-          )
-        end
-      end,
+    local finder = function()
+      local res = vim.fn.systemlist('tt')
+      local items = {}
+      for _, item in ipairs(res) do
+        items[#items + 1] = { text = item, file = item, dir = item }
+      end
+      return items
+    end
+
+    local confirm = function(picker, item)
+      picker:close()
+      local dirs = { item.dir }
+      vim.schedule(
+        function() Snacks.picker.files({ dirs = dirs, hidden = true }) end
+      )
+    end
+
+    Snacks.picker({
+      title = 'Projects',
+      format = 'filename',
+      finder = finder,
+      confirm = confirm,
+      live = false,
     })
   end, { desc = 'pick projects' })
 end)

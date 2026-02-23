@@ -40,6 +40,21 @@ Z.map('n', ']e', '<Cmd>move+v:count1<CR>')
 Z.map('n', '<leader>q', vim.diagnostic.open_float, { desc = 'diag open float' })
 Z.map('n', '<leader>bq', vim.diagnostic.setqflist, { desc = 'diag set qflist' })
 
+Z.map('n', '<leader>bc', function()
+  local markers = { '.git', 'Makefile' }
+  local filename = vim.api.nvim_buf_get_name(0)
+
+  if filename == '' or not vim.uv.fs_stat(filename) then return end
+
+  local dirname = vim.fs.dirname(filename)
+  local root_dirname = dirname
+  local root_filename = vim.fs.find(markers, { path = dirname, upward = true })[1]
+
+  if root_filename ~= nil then root_dirname = vim.fs.dirname(root_filename) end
+
+  vim.fn.chdir(root_dirname)
+end, { desc = "cd to current file's root" })
+
 Z.map('n', '<leader>r', function()
   if vim.env.TMUX == nil or vim.env.TMUX == '' then
     vim.notify('run: failed. Not in tmux')
