@@ -30,7 +30,7 @@ Z.on_event('CursorMoved', function()
   Z.map('n', '<leader>bo', '<Cmd>Outline<CR>')
 end)
 
-Z.on_event('CursorMoved', function()
+Z.now_if_args(function()
   Z.add('https://github.com/kevinhwang91/nvim-ufo')
   Z.add('https://github.com/kevinhwang91/promise-async')
   vim.o.foldlevel = 99
