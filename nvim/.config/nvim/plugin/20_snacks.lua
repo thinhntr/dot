@@ -41,8 +41,8 @@ Z.now(function()
   Z.map('n', '<leader>fr', '<Cmd>lua Snacks.picker.resume()<CR>')
   Z.map('n', '<leader>ft', '<Cmd>lua Snacks.notifier.show_history()<CR>')
 
-  Z.map('n', '<leader>fg',       '<Cmd>lua Snacks.picker.grep({ hidden = true })<CR>')
-  Z.map('n', '<leader><leader>', '<Cmd>lua Snacks.picker.files({ hidden = true })<CR>')
+  -- Z.map('n', '<leader>fg',       '<Cmd>lua Snacks.picker.grep({ hidden = true })<CR>')
+  -- Z.map('n', '<leader><leader>', '<Cmd>lua Snacks.picker.files({ hidden = true })<CR>')
   -- stylua: ignore end
 
   Z.map(
