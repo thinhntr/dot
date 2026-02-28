@@ -1,11 +1,3 @@
-Z.on_event('CursorMoved', function()
-  Z.add('https://github.com/SmiteshP/nvim-navic')
-  require('nvim-navic').setup({
-    lsp = { auto_attach = true },
-    depth_limit = 5,
-  })
-end)
-
 Z.later(function()
   Z.add('https://github.com/nvim-lualine/lualine.nvim')
   Z.add('https://github.com/nvim-lua/plenary.nvim')
