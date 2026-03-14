@@ -12,12 +12,12 @@ Z.create_autocmd('FileType', 'help', function()
   end
 end, 'read help in vertical split')
 
-Z.create_autocmd(
-  'BufReadPost',
-  nil,
-  function() pcall(vim.cmd.normal, '\'"') end,
-  'restore cursor position'
-)
+-- Z.create_autocmd(
+--   'BufReadPost',
+--   nil,
+--   function() pcall(vim.cmd.normal, '\'"') end,
+--   'restore cursor position'
+-- )
 
 Z.create_autocmd(
   'WinEnter',

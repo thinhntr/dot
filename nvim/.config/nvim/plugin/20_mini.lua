@@ -5,6 +5,11 @@ Z.now(function()
 end)
 
 Z.now_if_args(function()
+  require('mini.misc').setup()
+  MiniMisc.setup_restore_cursor()
+end)
+
+Z.now_if_args(function()
   require('mini.files').setup({
     mappings = {
       go_in_plus = 'l',
