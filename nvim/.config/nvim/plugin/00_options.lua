@@ -9,7 +9,7 @@ vim.o.list = true
 vim.o.listchars = 'tab:» ,trail:·,nbsp:␣'
 vim.o.guicursor = ''
 vim.o.laststatus = 3 -- all windows use the same status line
-vim.o.wrap = true
+vim.o.wrap = false
 vim.o.breakindent = true -- wrapped line appears visually indented
 vim.o.linebreak = true -- wrapped line don't break word
 vim.o.scrolloff = 3
@@ -19,6 +19,7 @@ vim.o.splitright = true
 vim.o.splitbelow = true
 vim.o.winborder = 'single'
 vim.o.concealcursor = 'nc'
+vim.o.colorcolumn = '80'
 
 -- tab
 vim.o.tabstop = 2

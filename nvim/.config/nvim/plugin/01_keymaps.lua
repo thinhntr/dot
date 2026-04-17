@@ -5,7 +5,7 @@ Z.map('n', '<Esc>', '<Cmd>nohlsearch<CR>')
 Z.map('i', '<C-l>', '<Right>', { desc = 'move cursor to the right' })
 
 Z.map('n', '<C-q>', '<C-w><C-q>', { desc = 'close window' })
-Z.map('n', '<C-h>', '<C-w><C-h>', { desc = 'cycle through windows' })
+Z.map('n', '<C-h>', '<C-w><C-w>', { desc = 'cycle through windows' })
 
 Z.map({ 'x' }, '<leader>p', '"_dP')
 Z.map({ 'n', 'v' }, '<leader>d', '"_d')
@@ -54,6 +54,13 @@ Z.map('n', '<leader>bc', function()
 
   vim.fn.chdir(root_dirname)
 end, { desc = "cd to current file's root" })
+
+Z.map('n', '<leader>bd', function()
+  local filename = vim.api.nvim_buf_get_name(0)
+  if filename == '' or not vim.uv.fs_stat(filename) then return end
+  local dirname = vim.fs.dirname(filename)
+  vim.fn.chdir(dirname)
+end, { desc = "cd to current file's directory" })
 
 Z.map('n', '<leader>r', function()
   if vim.env.TMUX == nil or vim.env.TMUX == '' then

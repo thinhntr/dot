@@ -12,6 +12,12 @@ fd = "latest"
 bob = "latest"
 uv = "latest"
 tree-sitter = "latest"
+terraform = "1.14.6"
+helm = "4.1.3"
+aws = { version = "latest", symlink_bins = "true" }
+kubectl = "latest"
+k9s = "latest"
+bun = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = []
