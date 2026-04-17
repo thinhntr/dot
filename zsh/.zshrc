@@ -19,7 +19,8 @@ bindkey -e # use emacs keymaps
 bindkey "^[[3~" delete-char # hack: fix tmux removes delete-char keybind
 
 # auto completion
-autoload -U compinit; compinit
+autoload bashcompinit && bashcompinit
+autoload -Uz compinit && compinit
 _comp_options+=(globdots) # With hidden files
 # Allow to select in a menu
 zstyle ':completion:*' menu select
@@ -38,11 +39,16 @@ bindkey '^Xe' edit-command-line
 # -------------------------------------------
 alias v="nvim"
 alias t='tmux'
+alias k='kubectl'
 alias ap='ansible-playbook'
 alias pm='podman'
+alias docker='podman'
 alias dk='docker'
+alias tf='terraform'
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
+alias z='cd `tt | fzf`'
+alias reload='source ~/.zshrc'
 
 
 alias g='git'
@@ -54,6 +60,22 @@ alias diff='diff --color=auto -u'
 
 alias pgg='curl https://api.ipify.org'
 
+alias rma='tee >(xargs rm -fr)'
+
+pmrm() {
+    podman ps -aq | tee >(xargs podman kill) >(xargs podman rm)
+    podman images -q --filter 'dangling=true' | tee >(xargs podman rmi -f)
+}
+
+pmrma() {
+    pmrm
+    podman builder prune --all -f
+}
+
+gfp() {
+    git pull --prune
+    git branch -vv | rg ': gone]' | awk '{print $1}' | xargs git branch -D
+}
 # -------------------------------------------
 # | LOAD PLUGINS                            |
 # -------------------------------------------

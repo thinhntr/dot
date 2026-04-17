@@ -1,2 +1,4 @@
 utils/ts_dirs
 nvim-pack-lock.json
+
+.DS_Store
