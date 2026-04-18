@@ -4,7 +4,7 @@
 export LANG=en_US.UTF-8
 export EDITOR=nvim
 export VISUAL=nvim
-export PATH="$HOME/utils:$HOME/bin:$PATH"
+export PATH="$HOME/.local/share/bob/nvim-bin:$HOME/utils:$HOME/bin:$PATH"
 
 WORDCHARS="*?_.[]~=&;!#$%^(){}<>"
 HISTFILE=~/.zsh_history
@@ -79,7 +79,7 @@ gfp() {
 # -------------------------------------------
 # | LOAD PLUGINS                            |
 # -------------------------------------------
-[[ -f ~/.local/bin/mise ]] && eval "$(~/.local/bin/mise activate zsh)"
+[[ -f /usr/bin/mise ]] && eval "$(/usr/bin/mise activate zsh)"
 for plugin in $(find ~/zsh-custom); do
     [[ "${plugin##*.}" == "zsh" ]] && source $plugin
 done
