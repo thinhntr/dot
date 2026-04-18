@@ -1,0 +1,17 @@
+# This is Git's per-user configuration file.
+[core]
+	commentChar = ";"
+[commit]
+	template = "~/.gitmessage"
+[merge]
+	ff = only
+	conflictStyle = zdiff3
+[alias]
+	br = branch
+	cc = commit
+	co = checkout
+	cp = cherry-pick
+	rb = rebase
+	ss = status
+	ls = ls-files
+	lsi = ls-files -i -o --exclude-standard --directory
