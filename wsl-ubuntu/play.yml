@@ -1,0 +1,58 @@
+---
+- name: set up
+  hosts: localhost
+  tasks:
+    - name: bin dir
+      file:
+        path: $HOME/bin
+        state: directory
+
+    - name: zsh-custom dir
+      file:
+        path: $HOME/zsh-custom
+        state: directory
+
+    - name: general - stow symlinks
+      shell: |
+        stow -R zsh -t $HOME
+        stow -R brew -t $HOME
+
+    - name: mise - install
+      shell: |
+        if [[ ! -f ~/.local/bin/mise ]] ; then
+            curl https://mise.run | sh
+        fi
+
+    - name: mise - stow symlinks
+      command: stow -R mise -t $HOME
+
+    - name: mise install packages
+      command: mise i
+
+    - name: stow symlinks
+      shell: |
+        stow -R fzf -t $HOME
+        stow -R starship -t $HOME
+        stow -R tmux -t $HOME
+        stow -R nvim -t $HOME
+        stow -R wezterm -t $HOME
+        stow -R bat -t $HOME
+        stow -R ghostty -t $HOME
+        stow -R aerospace -t $HOME
+        stow -R aws -t $HOME
+
+    - name: utils dir
+      file:
+        path: $HOME/utils
+        state: directory
+
+    - name: utils dir - stow symlink
+      command: stow -R utils -t $HOME/utils
+
+    - name: neovim - install
+      shell: |
+        if command -v bob ; then
+          bob use nightly
+        else
+          echo Cannot install neovim. bob not found
+        fi

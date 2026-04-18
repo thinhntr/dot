@@ -1,0 +1,10 @@
+{
+    "handle error": {
+        "prefix": "ifer",
+        "body": [
+            "if err != nil {",
+            "\t$0",
+            "}"
+        ]
+    }
+}

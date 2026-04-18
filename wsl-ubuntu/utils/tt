@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+find $(cat ~/utils/ts_dirs) -maxdepth 2 -mindepth 1 -type d
