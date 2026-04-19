@@ -11,4 +11,4 @@ atx() {
   fi
 }
 
-complete -C '/Users/thinh/.local/share/mise/installs/aws/2.34.11/.mise-bins/aws_completer' aws
+complete -C `which aws_completer` aws
