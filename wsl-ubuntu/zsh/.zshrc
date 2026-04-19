@@ -41,8 +41,6 @@ alias v="nvim"
 alias t='tmux'
 alias k='kubectl'
 alias ap='ansible-playbook'
-alias pm='podman'
-alias docker='podman'
 alias dk='docker'
 alias tf='terraform'
 alias ls='ls --color=auto'
@@ -62,14 +60,14 @@ alias pgg='curl https://api.ipify.org'
 
 alias rma='tee >(xargs rm -fr)'
 
-pmrm() {
-    podman ps -aq | tee >(xargs podman kill) >(xargs podman rm)
-    podman images -q --filter 'dangling=true' | tee >(xargs podman rmi -f)
+dkrm() {
+    docker ps -aq | tee >(xargs docker kill) >(xargs docker rm)
+    docker images -q --filter 'dangling=true' | tee >(xargs docker rmi -f)
 }
 
-pmrma() {
-    pmrm
-    podman builder prune --all -f
+dkrma() {
+    dkrm
+    docker builder prune --all -f
 }
 
 gfp() {
