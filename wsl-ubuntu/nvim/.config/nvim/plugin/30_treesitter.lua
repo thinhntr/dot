@@ -14,7 +14,7 @@ Z.now_if_args(function()
   })
 
   require('nvim-treesitter').install({ 'lua', 'python', 'go' })
-  Z.create_autocmd('FileType', { 'lua', 'py', 'go' }, function()
+  Z.create_autocmd('FileType', { 'lua', 'python', 'go', 'terraform', 'hcl' }, function()
     vim.treesitter.start()
     vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
   end, 'setup treesitter')

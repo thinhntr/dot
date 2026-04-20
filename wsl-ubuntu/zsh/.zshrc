@@ -4,7 +4,7 @@
 export LANG=en_US.UTF-8
 export EDITOR=nvim
 export VISUAL=nvim
-export PATH="$HOME/.local/share/bob/nvim-bin:$HOME/utils:$HOME/bin:$PATH"
+export PATH="$HOME/.bun/bin:$HOME/.local/share/bob/nvim-bin:$HOME/utils:$HOME/bin:$PATH"
 
 WORDCHARS="*?_.[]~=&;!#$%^(){}<>"
 HISTFILE=~/.zsh_history
