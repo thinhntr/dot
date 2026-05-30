@@ -8,7 +8,6 @@ Z.later(function()
 
   vim.g.fff = {
     keymaps = { close = '<C-c>' },
-    debug = { enabled = true, show_scores = true },
     preview = { wrap_lines = true, line_numbers = true },
     layout = { width = 1, preview_size = 0.45 },
   }

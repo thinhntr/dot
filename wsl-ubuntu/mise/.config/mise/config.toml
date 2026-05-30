@@ -18,6 +18,7 @@ aws = { version = "latest", symlink_bins = "true" }
 kubectl = "latest"
 k9s = "latest"
 bun = "latest"
+rust = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = []
