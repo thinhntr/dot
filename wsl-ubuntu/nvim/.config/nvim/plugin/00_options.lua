@@ -1,6 +1,5 @@
 -- global variables
 vim.g.mapleader = ' '
-vim.g.have_nerd_font = true
 
 -- appearance
 vim.o.number = true
@@ -38,7 +37,7 @@ vim.diagnostic.config({
   severity_sort = true,
   virtual_text = true,
   signs = {
-    text = not vim.g.have_nerd_font and {} or {
+    text = {
       [vim.diagnostic.severity.ERROR] = '󰅚',
       [vim.diagnostic.severity.WARN] = '󰀪',
       [vim.diagnostic.severity.INFO] = '',

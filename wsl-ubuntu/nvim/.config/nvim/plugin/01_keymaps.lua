@@ -14,6 +14,7 @@ Z.map({ 'n', 'v' }, '<leader>c', '"_c')
 Z.map({ 'n', 'v' }, '<leader>C', '"_C')
 Z.map({ 'n', 'v' }, '<leader>y', '"+y')
 Z.map({ 'n', 'v' }, '<leader>Y', '"+Y')
+
 Z.map({ 'n' }, '<leader>by', function()
   local text = vim.fn.getreg('+')
   vim.system({ 'ansifilter' }, { stdin = text, text = true }, function(obj)

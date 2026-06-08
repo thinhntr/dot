@@ -1,4 +1,10 @@
 Z.now(function()
+  Z.add({'https://github.com/folke/tokyonight.nvim'})
+  require('tokyonight').setup({})
+  vim.cmd.colorscheme('tokyonight')
+end)
+
+Z.now(function()
   require('mini.icons').setup({})
   Z.later(MiniIcons.mock_nvim_web_devicons)
   Z.later(MiniIcons.tweak_lsp_kind)
@@ -24,6 +30,10 @@ Z.now_if_args(function()
 
     if not MiniFiles.close() then MiniFiles.open(path) end
   end)
+end)
+
+Z.now_if_args(function()
+  require('mini.indentscope').setup()
 end)
 
 Z.later(function() require('mini.align').setup() end)
@@ -54,3 +64,8 @@ Z.later(function()
     },
   })
 end)
+
+Z.later(function()
+  require('mini.notify').setup()
+end)
+

@@ -13,7 +13,7 @@ Z.later(function()
     },
   })
 
-  vim.lsp.enable({ 'basedpyright' })
+  vim.lsp.enable({ 'pyrefly' })
 
   require('nvim-navic').setup({
     lsp = { auto_attach = true },

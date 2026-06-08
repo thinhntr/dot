@@ -4,16 +4,22 @@ _G.Z = {}
 -- │ Troubleshoot helpers │
 -- └──────────────────────┘
 ---@param x any
----@param tag string
+---@param tag string?
 ---@param level vim.log.levels?
 Z.notify = function(x, tag, level)
+  tag = tag or ""
   level = level or vim.log.levels.DEBUG
+
+  -- check who calls this `notify` function
   local info = debug.getinfo(2, 'Sl')
   local filename = info.source:match('([^/\\]+)$')
   local location = filename .. ':' .. info.currentline
+
+  -- show notification msg
   local msg = location .. ' ' .. tag .. '="' .. vim.inspect(x) .. '"'
   vim.notify(msg, level)
 
+  -- save msg to log file
   local log_path = vim.env.HOME .. '/.nvim.log'
   local file, err = io.open(log_path, 'a+')
   if file == nil then
@@ -22,8 +28,6 @@ Z.notify = function(x, tag, level)
   end
 
   local timestamp = tostring(os.date('%Y-%m-%dT%H:%M:%S%Z'))
-  msg = timestamp .. ' ' .. msg .. '\n'
-
   file:write(timestamp .. ' ' .. msg .. '\n')
   file:close()
 end
@@ -42,20 +46,10 @@ end
 -- └────────────────┘
 Z.map = vim.keymap.set
 
-local mini_path = vim.fn.stdpath('data') .. '/site/pack/deps/start/mini.nvim'
-if not vim.uv.fs_stat(mini_path) then
-  vim.cmd('echo "Installing `mini.nvim`" | redraw')
-  local origin = 'https://github.com/nvim-mini/mini.nvim'
-  local clone_cmd = { 'git', 'clone', '--filter=blob:none', origin, mini_path }
-  vim.fn.system(clone_cmd)
-  vim.cmd('packadd mini.nvim | helptags ALL')
-  vim.cmd('echo "Installed `mini.nvim`" | redraw')
-end
-
-require('mini.deps').setup()
+vim.pack.add({ 'https://github.com/nvim-mini/mini.nvim' })
 
 local misc = require('mini.misc')
-Z.add = MiniDeps.add
+Z.add = vim.pack.add
 Z.now = function(f) misc.safely('now', f) end
 Z.later = function(f) misc.safely('later', f) end
 Z.now_if_args = vim.fn.argc(-1) > 0 and Z.now or Z.later

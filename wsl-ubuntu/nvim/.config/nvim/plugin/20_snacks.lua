@@ -1,30 +1,12 @@
 Z.now(function()
-  Z.add('https://github.com/folke/snacks.nvim')
+  Z.add({'https://github.com/folke/snacks.nvim'})
   require('snacks').setup({
-    statuscolumn = {},
-    styles = { notification = { wo = { wrap = true } } },
-    notifier = { timeout = 8000 },
     picker = {
       layout = { preset = 'ivy', preview = false },
       matcher = { frecency = true },
       formatters = { file = { truncate = 120 } },
     },
-    indent = {
-      indent = { char = '╎' },
-      scope = { char = '╎' },
-      animate = { enabled = false },
-    },
-    scope = {
-      keys = {
-        jump = {
-          ['[i'] = { cursor = true },
-          [']i'] = { cursor = true },
-        },
-      },
-    },
   })
-
-  Z.create_autocmd('FileType', { 'help', 'qf' }, function() vim.wo.stc = '' end)
 
   -- stylua: ignore start
   Z.map('n', 'grr', '<Cmd>lua Snacks.picker.lsp_references()<CR>')
