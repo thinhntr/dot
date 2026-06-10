@@ -17,8 +17,8 @@ vim.o.termguicolors = true
 vim.o.splitright = true
 vim.o.splitbelow = true
 vim.o.winborder = 'single'
-vim.o.concealcursor = 'nc'
-vim.o.colorcolumn = '80'
+vim.o.concealcursor = 'n'
+-- vim.o.colorcolumn = '120'
 
 -- tab
 vim.o.tabstop = 2

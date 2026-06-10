@@ -12,6 +12,7 @@ Z.create_autocmd('FileType', 'help', function()
   end
 end, 'read help in vertical split')
 
+-- Only show cursorline on active win
 Z.create_autocmd(
   'WinEnter',
   nil,
@@ -22,6 +23,18 @@ Z.create_autocmd('WinLeave', nil, function()
   if vim.bo.filetype == 'qf' then return end
   vim.wo.cursorline = false
 end, 'disable cursorline for inactive win')
+
+-- Dynamically adjust scrolloff value based on window height
+Z.create_autocmd({ 'VimEnter', 'WinResized' }, nil, function()
+  local height = vim.api.nvim_win_get_height(0)
+  if height > 30 then
+    vim.wo.scrolloff = 5
+  elseif height > 15 then
+    vim.wo.scrolloff = 3
+  else
+    vim.wo.scrolloff = 0
+  end
+end)
 
 -- vim.api.nvim_create_autocmd('BufWritePost', {
 --   desc = 'Create BarBuf',
