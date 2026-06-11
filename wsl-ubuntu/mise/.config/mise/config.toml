@@ -20,6 +20,7 @@ k9s = "latest"
 bun = "latest"
 rust = "latest"
 zig = "latest"
+gh = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = []

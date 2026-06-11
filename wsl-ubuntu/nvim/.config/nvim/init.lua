@@ -9,7 +9,7 @@ _G.Z = {}
 --- @param tag string?
 --- @param level vim.log.levels?
 Z.log = function(x, tag, level)
-  level = level or vim.log.levels.DEBUG
+  level = level or vim.log.levels.INFO
 
   -- Check who calls this `log` function
   local info = debug.getinfo(2, 'Sl')

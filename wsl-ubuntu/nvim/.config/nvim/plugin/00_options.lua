@@ -6,6 +6,7 @@ vim.o.number = true
 vim.o.relativenumber = true
 vim.o.list = true
 vim.o.listchars = 'tab:» ,trail:·,nbsp:␣'
+vim.o.fillchars = 'diff: '
 vim.o.guicursor = ''
 vim.o.laststatus = 3 -- all windows use the same status line
 vim.o.wrap = false
@@ -31,6 +32,7 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.o.fixeol = false
 vim.o.confirm = true -- ask to save before exit
+vim.opt.diffopt:append('algorithm:patience')
 
 -- diagnostic
 vim.diagnostic.config({

@@ -82,6 +82,7 @@ Z.later(function()
   Z.add({
     'https://github.com/tpope/vim-fugitive',
     'https://github.com/lewis6991/gitsigns.nvim',
+    'https://github.com/sindrets/diffview.nvim',
   })
 
   Z.map('n', '<leader>gg', function()
