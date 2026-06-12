@@ -79,6 +79,8 @@ Z.later(function()
     local lsp = MiniStatusline.section_lsp({ trunc_width = 110 })
     local location = MiniStatusline.section_location({ trunc_width = 80 })
     local navic = ''
+
+    -- breadcrumbs
     if
       package.loaded['nvim-navic']
       and require('nvim-navic').is_available()
@@ -87,9 +89,14 @@ Z.later(function()
       navic = require('nvim-navic').get_location()
     end
 
+    -- filename
+    local filename = vim.bo.buftype == 'terminal' and '%t' or '%f%m%r'
+    local filename_maxwid = vim.o.columns < 95 and '30' or ''
+    filename = string.format("%%-00.%s(%s%%)", filename_maxwid, filename)
+
     return MiniStatusline.combine_groups({
       { hl = mode_hl, strings = { mode } },
-      { hl = 'MiniStatuslineFileinfo', strings = { '%t' } },
+      { hl = 'MiniStatuslineFileinfo', strings = { filename } },
       '%<', -- Mark general truncate point
       { hl = 'MiniStatuslineFilename', strings = { navic } },
       '%=', -- End left alignment
