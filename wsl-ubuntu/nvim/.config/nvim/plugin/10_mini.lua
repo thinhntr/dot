@@ -134,7 +134,7 @@ Z.later(function()
   Z.map('n', '<leader>pk', MiniExtra.pickers.keymaps, { desc = 'pick keymaps' })
   Z.map('n', '<leader>pb', MiniPick.builtin.buffers,  { desc = 'pick buffers' })
   Z.map('n', '<leader>pr', MiniPick.builtin.resume,   { desc = 'pick resume' })
-  Z.map('n', '<leader>pm', MiniNotify.show_history,   { desc = 'pick resume' })
+  Z.map('n', '<leader>pm', MiniNotify.show_history,   { desc = 'pick nofify history' })
   Z.map('n', '<leader>pp', MiniPick.registry.projects, { desc = 'pick projects' })
   -- stylua: ignore end
 end)
