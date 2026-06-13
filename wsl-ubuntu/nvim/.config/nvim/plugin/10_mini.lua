@@ -70,6 +70,8 @@ Z.later(function()
   })
 end)
 
+Z.later(function() require('mini.splitjoin').setup() end)
+
 Z.later(function()
   local active = function()
     local mode, mode_hl = MiniStatusline.section_mode({ trunc_width = 999 })
