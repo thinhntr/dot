@@ -21,6 +21,7 @@ bun = "latest"
 rust = "latest"
 zig = "latest"
 gh = "latest"
+pandoc = "latest"
 
 [settings]
 idiomatic_version_file_enable_tools = []

@@ -181,3 +181,8 @@ Z.later(function()
     Z.map('n', '<leader>' .. i, function() harpoon:list():select(i) end)
   end
 end)
+
+Z.later(function()
+  vim.g.preview = { markdown = true }
+  vim.pack.add({ 'https://git.barrettruth.com/barrettruth/preview.nvim' })
+end)
