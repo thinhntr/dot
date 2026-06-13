@@ -38,6 +38,7 @@ Z.later(function()
 
   require('blink.cmp').setup({
     signature = { enabled = true },
+    cmdline = { enabled = false },
     keymap = {
       ['<Tab>'] = false,
       ['<S-Tab>'] = false,
