@@ -1,8 +1,6 @@
 # This is Git's per-user configuration file.
 [core]
 	commentChar = ";"
-[commit]
-	template = "~/.gitmessage"
 [merge]
 	ff = only
 	conflictStyle = zdiff3
