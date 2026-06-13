@@ -127,7 +127,7 @@ Z.later(function()
 end)
 
 Z.later(function()
-  vim.pack.add({ { src = 'https://github.com/dmtrKovalenko/fff.nvim', version = '0.9.4' } })
+  vim.pack.add({ { src = 'https://github.com/dmtrKovalenko/fff.nvim', version = 'v0.9.4' } })
 
   Z.on_packchanged(
     'fff.nvim',
@@ -137,6 +137,7 @@ Z.later(function()
 
   vim.g.fff = {
     lazy_sync = true,
+    preview = { enabled = false },
     -- debug = { enabled = true, show_scores = true },
   }
 
