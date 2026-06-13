@@ -79,10 +79,17 @@ Z.later(function()
 end)
 
 Z.later(function()
+  vim.g.diffs = {
+    integrations = {
+      fugitive = true,
+      gitsigns=true,
+    },
+  }
+
   Z.add({
     'https://github.com/tpope/vim-fugitive',
     'https://github.com/lewis6991/gitsigns.nvim',
-    'https://github.com/sindrets/diffview.nvim',
+    'https://github.com/barrettruth/diffs.nvim',
   })
 
   Z.map('n', '<leader>gg', function()
@@ -123,7 +130,10 @@ Z.later(function()
     end, 'Prev Hunk')
   end
 
-  require('gitsigns').setup({ on_attach = setup_keymaps })
+  require('gitsigns').setup({
+    on_attach = setup_keymaps,
+    sign_priority = 20,
+  })
 end)
 
 Z.later(function()
