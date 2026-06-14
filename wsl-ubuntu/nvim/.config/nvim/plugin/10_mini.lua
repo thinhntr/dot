@@ -70,6 +70,8 @@ Z.later(function()
   })
 end)
 
+Z.later(function() require('mini.cmdline').setup() end)
+
 Z.later(function() require('mini.splitjoin').setup() end)
 
 Z.later(function()

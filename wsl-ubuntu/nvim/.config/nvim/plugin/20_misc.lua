@@ -92,10 +92,7 @@ Z.later(function()
     'https://github.com/barrettruth/diffs.nvim',
   })
 
-  Z.map('n', '<leader>gg', function()
-    vim.cmd('Git')
-    if vim.o.columns > 125 then vim.cmd.wincmd('L') end
-  end, { desc = 'open vimfugitive' })
+  Z.map('n', '<leader>gg', '<cmd>Git<CR>', { desc = 'open vimfugitive' })
 
   local setup_keymaps = function(buffer)
     local gs = package.loaded.gitsigns

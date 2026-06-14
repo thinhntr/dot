@@ -5,7 +5,7 @@ Z.create_autocmd(
   'highlight on yank'
 )
 
-Z.create_autocmd('FileType', 'help', function()
+Z.create_autocmd('FileType', { 'help', 'fugitive' }, function()
   if vim.o.columns > 125 then
     vim.cmd.wincmd('L')
     vim.cmd('vert res 80')

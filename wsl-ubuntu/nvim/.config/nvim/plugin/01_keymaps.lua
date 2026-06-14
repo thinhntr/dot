@@ -40,7 +40,14 @@ Z.map('n', ']e', '<Cmd>move+v:count1<CR>')
 Z.map('n', '<leader>q', vim.diagnostic.open_float, { desc = 'diag open float' })
 Z.map('n', '<leader>bq', vim.diagnostic.setqflist, { desc = 'diag set qflist' })
 
-Z.map('n', '<leader>bc', function()
+Z.map(
+  'n',
+  '<C-w>3',
+  function() vim.cmd('vert res 80') end,
+  { desc = 'resize current window width to 80' }
+)
+
+Z.map('n', '<leader>br', function()
   local markers = { '.git', 'Makefile' }
   local filename = vim.api.nvim_buf_get_name(0)
 
@@ -55,7 +62,7 @@ Z.map('n', '<leader>bc', function()
   vim.fn.chdir(root_dirname)
 end, { desc = "cd to current file's root" })
 
-Z.map('n', '<leader>bd', function()
+Z.map('n', '<leader>bc', function()
   local filename = vim.api.nvim_buf_get_name(0)
   if filename == '' or not vim.uv.fs_stat(filename) then return end
   local dirname = vim.fs.dirname(filename)
