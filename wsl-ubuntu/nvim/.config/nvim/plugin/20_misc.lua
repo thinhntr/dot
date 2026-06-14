@@ -148,6 +148,7 @@ Z.later(function()
   vim.g.fff = {
     lazy_sync = true,
     preview = { enabled = false },
+    prompt = '> ',
     -- debug = { enabled = true, show_scores = true },
   }
 
