@@ -11,7 +11,7 @@ end)
 -- │ mini.nvim            │
 -- └──────────────────────┘
 Z.now(
-  function() require('mini.notify').setup({ lsp_progress = { enable = false } }) end
+  function() require('mini.notify').setup({ lsp_progress = { enable = true } }) end
 )
 
 Z.now(function()
@@ -73,6 +73,38 @@ end)
 Z.later(function() require('mini.splitjoin').setup() end)
 
 Z.later(function()
+  local map = require('mini.map')
+  map.setup({
+    window = { width = 8, winblend = 40 },
+    symbols = {
+      scroll_line = '▶',
+      scroll_view = '╎',
+      encode = map.gen_encode_symbols.dot('4x2'),
+      show_integration_count = false,
+    },
+    integrations = {
+      map.gen_integration.gitsigns(),
+    },
+  })
+
+  Z.now_if_args(function() MiniMap.open() end)
+
+  Z.map(
+    'n',
+    '<leader>mt',
+    function() MiniMap.toggle() end,
+    { desc = 'toggle minimap' }
+  )
+
+  Z.create_autocmd({ 'WinEnter', 'BufWinEnter' }, nil, function()
+    local exclude = { help = true, fugitive = true, minifiles = true }
+    if exclude[vim.bo.filetype] then MiniMap.close() end
+  end)
+
+  Z.create_autocmd('WinLeave', nil, function() MiniMap.open() end)
+end)
+
+Z.later(function()
   local active = function()
     local mode, mode_hl = MiniStatusline.section_mode({ trunc_width = 999 })
     local git = MiniStatusline.section_git({ trunc_width = 90 })
@@ -94,7 +126,7 @@ Z.later(function()
     -- filename
     local filename = vim.bo.buftype == 'terminal' and '%t' or '%f%m%r'
     local filename_maxwid = vim.o.columns < 95 and '30' or ''
-    filename = string.format("%%-00.%s(%s%%)", filename_maxwid, filename)
+    filename = string.format('%%-00.%s(%s%%)', filename_maxwid, filename)
 
     return MiniStatusline.combine_groups({
       { hl = mode_hl, strings = { mode } },
@@ -119,7 +151,7 @@ Z.later(function()
       toggle_preview = '<M-p>',
       mark = '<Tab>',
       choose_marked = '<C-q>',
-    }
+    },
   })
   require('mini.extra').setup({})
 

@@ -6,7 +6,7 @@ Z.create_autocmd(
 )
 
 Z.create_autocmd('FileType', 'help', function()
-  if vim.api.nvim_win_get_width(0) > 125 then
+  if vim.o.columns > 125 then
     vim.cmd.wincmd('L')
     vim.cmd('vert res 80')
   end

@@ -19,6 +19,7 @@ vim.o.splitright = true
 vim.o.splitbelow = true
 vim.o.winborder = 'single'
 vim.o.concealcursor = 'n'
+vim.o.pumheight = 10
 -- vim.o.colorcolumn = '120'
 
 -- tab

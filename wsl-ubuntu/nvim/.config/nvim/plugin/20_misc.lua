@@ -82,7 +82,7 @@ Z.later(function()
   vim.g.diffs = {
     integrations = {
       fugitive = true,
-      gitsigns=true,
+      gitsigns = true,
     },
   }
 
@@ -94,7 +94,7 @@ Z.later(function()
 
   Z.map('n', '<leader>gg', function()
     vim.cmd('Git')
-    if vim.api.nvim_win_get_width(0) > 125 then vim.cmd.wincmd('L') end
+    if vim.o.columns > 125 then vim.cmd.wincmd('L') end
   end, { desc = 'open vimfugitive' })
 
   local setup_keymaps = function(buffer)
@@ -137,7 +137,9 @@ Z.later(function()
 end)
 
 Z.later(function()
-  vim.pack.add({ { src = 'https://github.com/dmtrKovalenko/fff.nvim', version = 'v0.9.4' } })
+  vim.pack.add({
+    { src = 'https://github.com/dmtrKovalenko/fff.nvim', version = 'v0.9.4' },
+  })
 
   Z.on_packchanged(
     'fff.nvim',

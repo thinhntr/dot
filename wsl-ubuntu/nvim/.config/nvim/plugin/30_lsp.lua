@@ -33,7 +33,7 @@ end)
 Z.later(function()
   Z.add({
     'https://github.com/rafamadriz/friendly-snippets',
-    { src = 'https://github.com/saghen/blink.cmp', version = 'v1.10.2' }
+    { src = 'https://github.com/saghen/blink.cmp', version = 'v1.10.2' },
   })
 
   require('blink.cmp').setup({
