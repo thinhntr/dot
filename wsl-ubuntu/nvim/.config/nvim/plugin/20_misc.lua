@@ -193,7 +193,14 @@ Z.later(function()
   end
 end)
 
-Z.later(function()
+Z.on_filetype('markdown', function()
   vim.g.preview = { markdown = true }
   vim.pack.add({ 'https://git.barrettruth.com/barrettruth/preview.nvim' })
+end)
+
+Z.on_filetype('markdown', function()
+  vim.pack.add({ 'https://github.com/MeanderingProgrammer/render-markdown.nvim' })
+  require('render-markdown').setup({
+    anti_conceal = { disabled_modes = { 'n' } },
+  })
 end)
