@@ -20,6 +20,8 @@ vim.o.splitbelow = true
 vim.o.winborder = 'single'
 vim.o.concealcursor = 'n'
 vim.o.pumheight = 10
+vim.o.pumborder = 'rounded'
+vim.o.winborder = 'rounded'
 -- vim.o.colorcolumn = '120'
 
 -- tab
