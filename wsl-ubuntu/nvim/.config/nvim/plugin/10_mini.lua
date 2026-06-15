@@ -74,10 +74,10 @@ Z.later(function() require('mini.cmdline').setup() end)
 
 Z.later(function() require('mini.splitjoin').setup() end)
 
-Z.later(function()
+Z.now_if_args(function()
   local map = require('mini.map')
   map.setup({
-    window = { width = 8, winblend = 40 },
+    window = { width = 8, winblend = 80, zindex = 20 },
     symbols = {
       scroll_line = '▶',
       scroll_view = '╎',
@@ -89,8 +89,6 @@ Z.later(function()
     },
   })
 
-  Z.now_if_args(function() MiniMap.open() end)
-
   Z.map(
     'n',
     '<leader>mt',
@@ -99,11 +97,18 @@ Z.later(function()
   )
 
   Z.create_autocmd({ 'WinEnter', 'BufWinEnter' }, nil, function()
-    local exclude = { help = true, fugitive = true, minifiles = true }
-    if exclude[vim.bo.filetype] then MiniMap.close() end
+    local exclude = {
+      man = true,
+      help = true,
+      fugitive = true,
+      minifiles = true,
+    }
+    if exclude[vim.bo.filetype] then
+      MiniMap.close()
+    else
+      MiniMap.open()
+    end
   end)
-
-  Z.create_autocmd('WinLeave', nil, function() MiniMap.open() end)
 end)
 
 Z.later(function()
