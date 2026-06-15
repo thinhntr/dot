@@ -29,6 +29,9 @@ zstyle ':completion:*' completer _extensions _complete _approximate
 # See ZSHCOMPWID "completion matching control"
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
+# keymap to cycle backward menu completion items
+bindkey '^[[Z' reverse-menu-complete
+
 # edit command in $EDITOR
 autoload edit-command-line
 zle -N edit-command-line
