@@ -17,7 +17,6 @@ vim.o.cursorline = true
 vim.o.termguicolors = true
 vim.o.splitright = true
 vim.o.splitbelow = true
-vim.o.winborder = 'single'
 vim.o.concealcursor = 'n'
 vim.o.pumheight = 10
 vim.o.pumborder = 'rounded'
@@ -25,7 +24,7 @@ vim.o.winborder = 'rounded'
 -- vim.o.colorcolumn = '120'
 
 -- tab
-vim.o.tabstop = 2
+vim.o.tabstop = 4
 vim.o.shiftwidth = 0 -- zero -> uses 'tabstop'
 vim.o.softtabstop = 0 -- zero -> off, negative -> uses 'shiftwidth'
 vim.o.expandtab = true
