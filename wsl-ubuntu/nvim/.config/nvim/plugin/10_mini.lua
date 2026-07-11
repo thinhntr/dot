@@ -2,16 +2,33 @@
 -- │ colorscheme          │
 -- └──────────────────────┘
 Z.now(function()
-  Z.add({ 'https://github.com/folke/tokyonight.nvim' })
-  require('tokyonight').setup()
-  vim.cmd.colorscheme('tokyonight')
+  Z.add({
+    'https://github.com/folke/tokyonight.nvim',
+    'https://github.com/rebelot/kanagawa.nvim',
+  })
+
+  -- require('tokyonight').setup()
+
+  require('kanagawa').setup({
+    compile = true,
+    colors = { theme = { all = { ui = { bg_gutter = 'none' } } } },
+  })
+
+  vim.cmd.colorscheme('kanagawa')
+end)
+
+Z.now(function()
+  Z.add({ 'https://github.com/folke/snacks.nvim' })
+  require('snacks').setup({
+    statuscolumn = { enabled = true },
+  })
 end)
 
 -- ┌──────────────────────┐
 -- │ mini.nvim            │
 -- └──────────────────────┘
 Z.now(
-  function() require('mini.notify').setup({ lsp_progress = { enable = true } }) end
+  function() require('mini.notify').setup({ lsp_progress = { enable = false } }) end
 )
 
 Z.now(function()
@@ -70,8 +87,6 @@ Z.later(function()
     },
   })
 end)
-
-Z.later(function() require('mini.cmdline').setup() end)
 
 Z.later(function() require('mini.splitjoin').setup() end)
 

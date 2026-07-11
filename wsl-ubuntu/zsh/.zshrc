@@ -43,6 +43,7 @@ bindkey '^Xe' edit-command-line
 alias v="nvim"
 alias t='tmux'
 alias k='kubectl'
+alias m='nvim +Man!'
 alias ap='ansible-playbook'
 alias dk='docker'
 alias tf='terraform'
