@@ -10,10 +10,20 @@ Z.now_if_args(function()
   })
   -- stylua: ignore end
 
-  require('nvim-treesitter').install({ 'lua', 'python', 'go' })
+  local lang = {
+    'go',
+    'hcl',
+    'lua',
+    'python',
+    'rust',
+    'terraform',
+  }
+
+  require('nvim-treesitter').install(lang)
+
   Z.create_autocmd(
     'FileType',
-    { 'lua', 'python', 'go', 'terraform', 'hcl' },
+    lang,
     function()
       vim.treesitter.start()
       vim.bo.indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
